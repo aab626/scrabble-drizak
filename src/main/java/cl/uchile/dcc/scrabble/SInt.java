@@ -2,36 +2,38 @@ package cl.uchile.dcc.scrabble;
 
 import java.util.Objects;
 
-/** Representa un tipo interno de Int para Scrabble */
+/** Represents an integer (int) type for Scrabble */
 public class SInt {
     private int value;
 
     /**
-     * Constructor de SInt
-     * @param value int a representar
+     * SInt constructor
+     * @param value int to represent
      */
     public SInt(int value) {
         this.value = value;
     }
 
-    /** Actúa como un getValue()
-     * @return valor del int interno */
+    /**
+     * Acts like a getValue()
+     * @return value of internal int
+     */
     public int toInt() {
         return this.value;
     }
 
     /**
-     * Setter del int interno
-     * @param value Nuevo valor del int a representar
+     * Setter of internal int
+     * @param value New internal int value
      */
     public void setInt(int value){
         this.value = value;
     }
 
     /**
-     * @param obj Objeto a comparar la igualdad
-     * @return true si el otro objeto es un SFloat o SInt tal que el numero (double o int) interno
-     * sea igual al int interno en este SInt. false en cualquier otro caso.
+     * @param obj Object to check for equality
+     * @return true iff the other object is an SFloat or SInt such as its internal value is the same
+     * as of this SInt internal value. false otherwise
      */
     @Override
     public boolean equals(Object obj) {
@@ -53,18 +55,18 @@ public class SInt {
         return Objects.hashCode(SInt.class);
     }
 
-    /** @return Representacion como string del double interno */
+    /** @return String representation of internal int */
     @Override
     public String toString() {
         return String.valueOf(this.toInt());
     }
 
-    /** @return SFloat que contiene el valor int interno como un double */
+    /** @return SFloat containing the internal int value (as a double) */
     public SFloat asSFloat() {
         return new SFloat((double) this.value);
     }
 
-    /** @return SString que contiene el valor int interno como un string */
+    /** @return SString containing the internal int value (as a string) */
     public SString asSString() {
         return new SString(this.toString());
     }

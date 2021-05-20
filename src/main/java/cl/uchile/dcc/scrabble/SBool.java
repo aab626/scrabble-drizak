@@ -2,35 +2,37 @@ package cl.uchile.dcc.scrabble;
 
 import java.util.Objects;
 
-/** Representa un tipo interno de Booleano para Scrabble */
+/** Represents an internal Boolean type for Scrabble */
 public class SBool {
     private boolean value;
 
     /**
-     * Constructor de SBool
-     * @param value Booleano a representar
+     * SBool constructor
+     * @param value Boolean value to represent
      */
     public SBool(boolean value){
         this.value = value;
     }
 
-    /** Actúa como un getValue()
-     * @return valor del booleano interno */
+    /**
+     * Acts like a getValue()
+     * @return value of internal boolean
+     */
     public boolean toBool(){
         return this.value;
     }
 
     /**
-     * Setter del Booleano interno
-     * @param value Nuevo valor del boolean a representar
+     * Setter for internal boolean
+     * @param value New internal boolean value
      */
     public void setBool(boolean value){
         this.value = value;
     }
 
     /**
-     * @param obj Objeto a evaluar para la igualdad
-     * @return Retorna true si y solo si el otro objeto es un SBool que represente el mismo boolean. Retorna false en cualquier otro caso
+     * @param obj Object to check for equality
+     * @return true iff the other object is an SBool representing the same boolean value, false otherwise
      */
     @Override
     public boolean equals(Object obj){
@@ -49,17 +51,15 @@ public class SBool {
     }
 
     /**
-     * Retorna la representacion como String del booleano interno
-     * @return "true" o "false"
+     * Returns the string representation of the internal boolean
+     * @return "true" or "false"
      */
     @Override
     public String toString(){
         return String.valueOf(this.toBool());
     }
 
-    /**
-     * @return SString que contiene el valor booleano interno como un string
-     */
+    /** @return SString containing the internal boolean value (as a String) */
     public SString asSString(){
         return new SString(this.toString());
     }

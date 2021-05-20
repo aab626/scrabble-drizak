@@ -2,36 +2,38 @@ package cl.uchile.dcc.scrabble;
 
 import java.util.Objects;
 
-/** Representa un tipo interno de Float utilizando double para Scrabble */
+/** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
 public class SFloat {
     private double value;
 
     /**
-     * Constructor de SFloat
-     * @param value double a representar
+     * SFloat Constructor
+     * @param value double to represent
      */
     public SFloat(double value){
         this.value = value;
     }
 
-    /** Actúa como un getValue()
-     * @return valor del double interno */
+    /**
+     * Acts like a getValue()
+     * @return value of internal double
+     */
     public double toDouble(){
         return this.value;
     }
 
     /**
-     * Setter del double interno
-     * @param value Nuevo valor del double a representar
+     * Setter for internal double
+     * @param value New value of internal double
      */
     public void setDouble(double value) {
         this.value = value;
     }
 
     /**
-     * @param obj Objeto a evaluar para la igualdad
-     * @return true si el otro objeto es un SFloat o SInt tal que el numero (double o int)
-     * interno sea igual al double interno en este SFloat. false en cualquier otro caso.
+     * @param obj Object to check for equality
+     * @return true iff the other object is an SFloat or SInt such as its internal value is the same
+     * as of this SFloat internal double. false otherwise
      */
     @Override
     public boolean equals(Object obj){
@@ -51,13 +53,13 @@ public class SFloat {
         return Objects.hashCode(SFloat.class);
     }
 
-    /** @return Representacion como string del double interno */
+    /** @return String representation of the internal double*/
     @Override
     public String toString(){
         return String.valueOf(this.toDouble());
     }
 
-    /** @return SString que contiene el valor double interno como un string */
+    /** @return SString containing the internal double (as a String) */
     public SString asSString(){
         return new SString(this.toString());
     }
