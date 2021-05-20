@@ -61,6 +61,11 @@ public class SInt {
         return String.valueOf(this.toInt());
     }
 
+    /** @return a copy of this SInt */
+    public SInt copy() {
+        return new SInt(this.toInt());
+    }
+
     /** @return SFloat containing the internal int value (as a double) */
     public SFloat asSFloat() {
         return new SFloat((double) this.value);

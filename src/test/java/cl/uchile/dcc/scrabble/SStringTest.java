@@ -67,4 +67,9 @@ class SStringTest {
     void hashCodeTest(){
         assertEquals(Objects.hashCode(SString.class), sStringFixed.hashCode());
     }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void copyTest() {
+        assertEquals(randomSString, randomSString.copy());
+    }
 }

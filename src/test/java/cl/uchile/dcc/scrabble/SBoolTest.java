@@ -62,6 +62,15 @@ class SBoolTest {
     }
 
     @Test
+    void copyTest(){
+        assertEquals(sBoolTrue, sBoolTrue.copy());
+        assertNotEquals(sBoolFalse, sBoolTrue.copy());
+
+        assertEquals(sBoolFalse, sBoolFalse.copy());
+        assertNotEquals(sBoolTrue, sBoolFalse.copy());
+    }
+
+    @Test
     void asSStringTest(){
         assertEquals(new SString(String.valueOf(VALUE_TRUE)), sBoolTrue.asSString());
         assertEquals(new SString(String.valueOf(VALUE_FALSE)), sBoolFalse.asSString());

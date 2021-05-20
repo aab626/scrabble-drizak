@@ -83,6 +83,11 @@ class SIntTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void copyTest() {
+        assertEquals(randomSInt, randomSInt.copy());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
         assertEquals(new SString(String.valueOf(randomInt)), randomSInt.asSString());
     }

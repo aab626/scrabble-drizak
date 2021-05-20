@@ -52,6 +52,11 @@ public class SBinary {
         return Objects.hashCode(SBinary.class);
     }
 
+    /** @return a copy of this SBinary */
+    public SBinary copy() {
+        return new SBinary(this.toString());
+    }
+
     /** @return SString containing the Binary string (as the same String)*/
     public SString asSString() {
         return new SString(this.toString());

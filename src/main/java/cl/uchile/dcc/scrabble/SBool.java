@@ -59,6 +59,11 @@ public class SBool {
         return String.valueOf(this.toBool());
     }
 
+    /** @return a copy of this SBool */
+    public SBool copy() {
+        return new SBool(this.toBool());
+    }
+
     /** @return SString containing the internal boolean value (as a String) */
     public SString asSString(){
         return new SString(this.toString());

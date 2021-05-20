@@ -78,6 +78,11 @@ class SFloatTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void copyTest() {
+        assertEquals(randomSFloat, randomSFloat.copy());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
         assertEquals(new SString(String.valueOf(randomDouble)), randomSFloat.asSString());
     }

@@ -85,6 +85,11 @@ class SBinaryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void copyTest(){
+        assertEquals(new SBinary(randomBinaryString), (new SBinary(randomBinaryString)).copy());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
         assertEquals(new SString(randomBinaryString), randomSBinary.asSString());
 

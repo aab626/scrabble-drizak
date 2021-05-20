@@ -59,6 +59,11 @@ public class SFloat {
         return String.valueOf(this.toDouble());
     }
 
+    /** @return a copy of this SFloat */
+    public SFloat copy() {
+        return new SFloat(this.toDouble());
+    }
+
     /** @return SString containing the internal double (as a String) */
     public SString asSString(){
         return new SString(this.toString());

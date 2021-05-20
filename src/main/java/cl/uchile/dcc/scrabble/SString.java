@@ -50,4 +50,9 @@ public class SString {
     public int hashCode(){
         return Objects.hashCode(SString.class);
     }
+
+    /** @return a copy of this SString */
+    public SString copy() {
+        return new SString(this.toString());
+    }
 }
