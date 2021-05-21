@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.types;
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
-public class SFloat extends SBaseType implements IArithmeticable{
+public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
     private double value;
 
     /**
@@ -67,6 +67,10 @@ public class SFloat extends SBaseType implements IArithmeticable{
     /** @return SString containing the internal double (as a String) */
     public SString asSString(){
         return new SString(this.toString());
+    }
+
+    public SString concatenateWithSString(SString other) {
+        return new SString(other.toString() + this.toString());
     }
 
     public IArithmeticable add(IArithmeticable other) {

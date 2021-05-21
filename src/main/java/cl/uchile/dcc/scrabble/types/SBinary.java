@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary extends SBaseType {
+public class SBinary implements IConcatenable {
     private String value;
 
     /**
@@ -72,6 +72,10 @@ public class SBinary extends SBaseType {
     /** @return SInt containing the decimal representation of the binary string */
     public SInt asSInt() {
         return new SInt(BinaryUtils.toInt(this.toString()));
+    }
+
+    public SString concatenateWithSString(SString other) {
+        return new SString(other.toString() + this.toString());
     }
 
 }

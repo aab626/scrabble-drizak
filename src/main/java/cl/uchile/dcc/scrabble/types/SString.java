@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.types;
 import java.util.Objects;
 
 /** Represents an internal String type for Scrabble */
-public class SString extends SBaseType {
+public class SString implements IConcatenable {
     private String value;
 
     /**
@@ -62,8 +62,11 @@ public class SString extends SBaseType {
      * @return a new SString with the concatenated string of the original SString value
      * and the String representation of the other type
      */
-    public SString concatenate(SBaseType other) {
-        String newString = this.toString() + other.toString();
-        return new SString(newString);
+    public SString concatenate(IConcatenable other) {
+        return other.concatenateWithSString(this);
+    }
+
+    public SString concatenateWithSString(SString other) {
+        return new SString(other.toString() + this.toString());
     }
 }

@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.types;
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt extends SBaseType implements IArithmeticable{
+public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
     private int value;
 
     /**
@@ -79,6 +79,10 @@ public class SInt extends SBaseType implements IArithmeticable{
     // todo implementar transformacion: sint -> sbin
 //    public SBinary asSBinary() {
 //    }
+
+    public SString concatenateWithSString(SString other) {
+        return new SString(other.toString() + this.toString());
+    }
 
     public IArithmeticable add(IArithmeticable other) {
         return other.addSInt(this);
