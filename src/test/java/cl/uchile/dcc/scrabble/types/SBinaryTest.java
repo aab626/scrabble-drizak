@@ -18,14 +18,13 @@ class SBinaryTest {
 
     private SBinary sBinary150;
     private SBinary sBinary52;
-    private SBinary randomSBinary;
-    private final String SBINARY_VALUE_150 = "10010110";
+    private SBinary randomSBinary, randomSBinary2;
+    private final String SBINARY_VALUE_150 = "010010110";
     private final String SBINARY_VALUE_52 = "00110100";
-    private String randomBinaryString;
-    private String randomNonBinaryString;
-    private final char[] BINARY_CHARS = "01".toCharArray();
-    private final char[] NONBINARY_CHARS = "23456789".toCharArray();
-    private int randomInt;
+    private String randomBinaryString, randomBinaryString2;
+
+    private boolean randomBoolean;
+    private SBool randomSBool;
 
     @BeforeEach
     void setUp(){
@@ -38,7 +37,11 @@ class SBinaryTest {
         randomBinaryString = RandomUtils.randomBinaryString(SBINARY_VALUE_150);
         randomSBinary = new SBinary(randomBinaryString);
 
-        randomNonBinaryString = RandomUtils.randomNonBinaryString();
+        randomBinaryString2 = RandomUtils.randomBinaryString("");
+        randomSBinary2 = new SBinary(randomBinaryString2);
+
+        randomBoolean = RandomUtils.randomBool();
+        randomSBool = new SBool(randomBoolean);
     }
 
     @Test
@@ -90,4 +93,22 @@ class SBinaryTest {
     void asSIntTest() {
         assertEquals(new SInt(BinaryUtils.toInt(randomBinaryString)), (new SBinary(randomBinaryString)).asSInt());
     }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void notTest() {
+        assertEquals(new SBinary(BinaryUtils.invertBinary(randomBinaryString)), (new SBinary(randomBinaryString)).not());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void andTest() {
+        assertEquals(new SBinary(BinaryUtils.andBinaryWithBool(randomBinaryString, randomBoolean)), randomSBinary.and(randomSBool));
+        assertEquals(new SBinary(BinaryUtils.andBinaries(randomBinaryString, randomBinaryString2)), randomSBinary.and(randomSBinary2));
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void orTest() {
+        assertEquals(new SBinary(BinaryUtils.orBinaryWithBool(randomBinaryString, randomBoolean)), randomSBinary.or(randomSBool));
+        assertEquals(new SBinary(BinaryUtils.orBinaries(randomBinaryString, randomBinaryString2)), randomSBinary.or(randomSBinary2));
+    }
+
 }

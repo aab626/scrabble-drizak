@@ -4,8 +4,10 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 
 import java.util.Objects;
 
+import static java.lang.Math.abs;
+
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary implements IConcatenable {
+public class SBinary implements IConcatenable, ILogicable {
     private String value;
 
     /**
@@ -76,6 +78,34 @@ public class SBinary implements IConcatenable {
 
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
+    }
+
+    public SBinary not() {
+        return new SBinary(BinaryUtils.invertBinary(this.toString()));
+    }
+
+    public ILogicable and(ILogicable other) {
+        return other.andSBinary(this);
+    }
+
+    public SBinary andSBool(SBool other) {
+        return new SBinary(BinaryUtils.andBinaryWithBool(this.toString(), other.toBool()));
+    }
+
+    public SBinary andSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.andBinaries(this.toString(), other.toString()));
+    }
+
+    public ILogicable or(ILogicable other) {
+        return other.orSBinary(this);
+    }
+
+    public SBinary orSBool(SBool other) {
+        return new SBinary(BinaryUtils.orBinaryWithBool(this.toString(), other.toBool()));
+    }
+
+    public SBinary orSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.orBinaries(this.toString(), other.toString()));
     }
 
 }
