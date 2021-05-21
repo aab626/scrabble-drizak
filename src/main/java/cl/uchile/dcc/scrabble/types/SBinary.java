@@ -40,12 +40,11 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
      * @return true iff the other object is an SBinary that represents the same binary number,
      * false otherwise
      */
-    // todo revisar si esta comparacion es correcta siempre, "0010" == "10"?
     @Override
     public boolean equals(Object obj ){
         if (obj instanceof SBinary) {
             SBinary o = (SBinary) obj;
-            return this.toString().equals(o.toString());
+            return this.asSInt().toInt() == o.asSInt().toInt();
         } else {
             return false;
         }

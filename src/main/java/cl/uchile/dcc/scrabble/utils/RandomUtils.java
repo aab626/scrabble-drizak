@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.utils;
 
-import cl.uchile.dcc.scrabble.types.SBinary;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Random;
@@ -54,7 +53,7 @@ public class RandomUtils {
 
     /**
      * Generates a random binary string different to an specific one
-     * @param excludedBinaryString binary string to exclude from randomization
+     * @param excludedBinaryAsInt integer that represents a binary string to exclude from randomization
      * @return random binary string of 1 to 32 bits
      */
     public static String randomBinaryString(int excludedBinaryAsInt) {

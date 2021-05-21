@@ -22,9 +22,9 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic SUM operation, called by add when operated w/r to a SFloat
      * @param other SFloat to be operated with
-     * @return Object result of the (SFloat + IArithmeticOperable) operation
+     * @return SFloat result of the (SFloat + IArithmeticOperable) operation
      */
-    IArithmeticOperable addSFloat(SFloat other);
+    SFloat addSFloat(SFloat other);
 
     /**
      * Arithmetic SUM operation, called by add when operated w/r to a SBinary
@@ -50,16 +50,16 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic SUBTRACTION operation, called by subtract when operated w/r to a SFloat
      * @param other SFloat to be operated with
-     * @return Object result of the (SFloat - IArithmeticOperable) operation
+     * @return SFloat result of the (SFloat - IArithmeticOperable) operation
      */
-    IArithmeticOperable subtractSFloat(SFloat other);
+    SFloat subtractSFloat(SFloat other);
 
     /**
      * Arithmetic SUBTRACTION operation, called by subtract when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return Object result of the (SBinary - IArithmeticOperable) operation
+     * @return SBinary result of the (SBinary - IArithmeticOperable) operation
      */
-    IArithmeticOperable subtractSBinary(SBinary other);
+    SBinary subtractSBinary(SBinary other);
 
     /**
      * Method to be called to perform a MULTIPLICATION operation
@@ -78,16 +78,16 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic MULTIPLICATION operation, called by multiply when operated w/r to a SFloat
      * @param other SFloat to be operated with
-     * @return Object result of the (SFloat * IArithmeticOperable) operation
+     * @return SFloat result of the (SFloat * IArithmeticOperable) operation
      */
-    IArithmeticOperable multiplySFloat(SFloat other);
+    SFloat multiplySFloat(SFloat other);
 
     /**
      * Arithmetic MULTIPLICATION operation, called by multiply when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return Object result of the (SBinary * IArithmeticOperable) operation
+     * @return SBinary result of the (SBinary * IArithmeticOperable) operation
      */
-    IArithmeticOperable multiplySBinary(SBinary other);
+    SBinary multiplySBinary(SBinary other);
 
     /**
      * Method to be called to perform a DIVISION operation
@@ -106,14 +106,14 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic DIVISION operation, called by divide when operated w/r to a SFloat
      * @param other SFloat to be operated with
-     * @return Object result of the (IArithmeticOperable / SFloat) operation
+     * @return SFloat result of the (IArithmeticOperable / SFloat) operation
      */
-    IArithmeticOperable divideSFloat(SFloat other);
+    SFloat divideSFloat(SFloat other);
 
     /**
      * Arithmetic DIVISION operation, called by divide when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return Object result of the (IArithmeticOperable / SBinary) operation
+     * @return SBinary result of the (IArithmeticOperable / SBinary) operation
      */
-    IArithmeticOperable divideSBinary(SBinary other);
+    SBinary divideSBinary(SBinary other);
 }

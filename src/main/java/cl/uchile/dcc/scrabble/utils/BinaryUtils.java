@@ -1,8 +1,6 @@
 package cl.uchile.dcc.scrabble.utils;
 
 
-import cl.uchile.dcc.scrabble.types.SBinary;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.log;
 

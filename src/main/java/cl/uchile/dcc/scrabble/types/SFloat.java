@@ -91,7 +91,10 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         return new SFloat(this.toDouble() + other.toDouble());
     }
 
-    // todo add dummy explications
+    /**
+     * Operates with an integer version of the SFloat
+     * {@inheritDoc}
+     */
     @Override
     public SBinary addSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() + other.asSInt().toInt()));
@@ -112,6 +115,10 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         return new SFloat(-this.toDouble() + other.toDouble());
     }
 
+    /**
+     * Operates with an integer (truncated double) version of the SFloat
+     * {@inheritDoc}
+     */
     @Override
     public SBinary subtractSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) -this.toDouble() + other.asSInt().toInt()));
@@ -132,6 +139,10 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         return new SFloat(this.toDouble() * other.toDouble());
     }
 
+    /**
+     * Operates with an integer (truncated double) version of the SFloat
+     * {@inheritDoc}
+     */
     @Override
     public SBinary multiplySBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() * other.asSInt().toInt()));
@@ -152,6 +163,10 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         return new SFloat(other.toDouble() / this.toDouble());
     }
 
+    /**
+     * Operates with an integer (truncated double) version of the SFloat
+     * {@inheritDoc}
+     */
     @Override
     public SBinary divideSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / (int) this.toDouble()));
