@@ -81,7 +81,7 @@ public class SBool implements IConcatenable, ILogicable {
         return other.andSBool(this);
     }
 
-    public ILogicable andSBool(SBool other) {
+    public SBool andSBool(SBool other) {
         return new SBool(this.toBool() && other.toBool());
     }
 
@@ -93,7 +93,7 @@ public class SBool implements IConcatenable, ILogicable {
         return other.orSBool(this);
     }
 
-    public ILogicable orSBool(SBool other) {
+    public SBool orSBool(SBool other) {
         return new SBool(this.toBool() || other.toBool());
     }
 

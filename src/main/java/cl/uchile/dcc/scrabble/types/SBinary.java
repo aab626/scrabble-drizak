@@ -85,15 +85,15 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return other.addSBinary(this);
     }
 
-    public IArithmeticable addSInt(SInt other) {
+    public SInt addSInt(SInt other) {
         return new SInt(this.asSInt().toInt() + other.toInt());
     }
 
-    public IArithmeticable addSFloat(SFloat other) {
+    public SFloat addSFloat(SFloat other) {
         return new SFloat(this.asSInt().toInt() + other.toDouble());
     }
 
-    public IArithmeticable addSBinary(SBinary other) {
+    public SBinary addSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
         String binary = BinaryUtils.intToBinary(integer1 + integer2);
@@ -104,15 +104,15 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return other.substractSBinary(this);
     }
 
-    public IArithmeticable substractSInt(SInt other) {
+    public SInt substractSInt(SInt other) {
         return new SInt(-this.asSInt().toInt() + other.toInt());
     }
 
-    public IArithmeticable substractSFloat(SFloat other) {
+    public SFloat substractSFloat(SFloat other) {
         return new SFloat(-this.asSInt().toInt() + other.toDouble());
     }
 
-    public IArithmeticable substractSBinary(SBinary other) {
+    public SBinary substractSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
         String binary = BinaryUtils.intToBinary(-integer1 + integer2);
@@ -123,15 +123,15 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return other.multiplySBinary(this);
     }
 
-    public IArithmeticable multiplySInt(SInt other) {
+    public SInt multiplySInt(SInt other) {
         return new SInt(this.asSInt().toInt() * other.toInt());
     }
 
-    public IArithmeticable multiplySFloat(SFloat other) {
+    public SFloat multiplySFloat(SFloat other) {
         return new SFloat(this.asSInt().toInt() * other.toDouble());
     }
 
-    public IArithmeticable multiplySBinary(SBinary other) {
+    public SBinary multiplySBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
         String binary = BinaryUtils.intToBinary(integer1 * integer2);
@@ -142,38 +142,20 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return other.divideSBinary(this);
     }
 
-    public IArithmeticable divideSInt(SInt other) {
+    public SInt divideSInt(SInt other) {
         return new SInt(other.toInt() / this.asSInt().toInt());
     }
 
-    public IArithmeticable divideSFloat(SFloat other) {
+    public SFloat divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.asSInt().toInt());
     }
 
-    public IArithmeticable divideSBinary(SBinary other) {
+    public SBinary divideSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
         String binary = BinaryUtils.intToBinary(integer2 / integer1);
         return new SBinary(binary);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public SBinary not() {
         return new SBinary(BinaryUtils.invertBinary(this.toString()));

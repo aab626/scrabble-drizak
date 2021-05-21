@@ -79,16 +79,16 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return other.addSFloat(this);
     }
 
-    public IArithmeticable addSInt(SInt other) {
+    public SFloat addSInt(SInt other) {
         return new SFloat(this.toDouble() + other.toInt());
     }
 
-    public IArithmeticable addSFloat(SFloat other) {
+    public SFloat addSFloat(SFloat other) {
         return new SFloat(this.toDouble() + other.toDouble());
     }
 
     // todo add dummy explications
-    public IArithmeticable addSBinary(SBinary other) {
+    public SBinary addSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() + other.asSInt().toInt()));
     }
 
@@ -96,15 +96,15 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return other.substractSFloat(this);
     }
 
-    public IArithmeticable substractSInt(SInt other) {
+    public SFloat substractSInt(SInt other) {
         return new SFloat(-this.toDouble() + other.toInt());
     }
 
-    public IArithmeticable substractSFloat(SFloat other) {
+    public SFloat substractSFloat(SFloat other) {
         return new SFloat(-this.toDouble() + other.toDouble());
     }
 
-    public IArithmeticable substractSBinary(SBinary other) {
+    public SBinary substractSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) -this.toDouble() + other.asSInt().toInt()));
     }
 
@@ -112,15 +112,15 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return other.multiplySFloat(this);
     }
 
-    public IArithmeticable multiplySInt(SInt other) {
+    public SFloat multiplySInt(SInt other) {
         return new SFloat(this.toDouble() * other.toInt());
     }
 
-    public IArithmeticable multiplySFloat(SFloat other) {
+    public SFloat multiplySFloat(SFloat other) {
         return new SFloat(this.toDouble() * other.toDouble());
     }
 
-    public IArithmeticable multiplySBinary(SBinary other) {
+    public SBinary multiplySBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() * other.asSInt().toInt()));
     }
 
@@ -128,15 +128,15 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return other.divideSFloat(this);
     }
 
-    public IArithmeticable divideSInt(SInt other) {
+    public SFloat divideSInt(SInt other) {
         return new SFloat(other.toInt() / this.toDouble());
     }
 
-    public IArithmeticable divideSFloat(SFloat other) {
+    public SFloat divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.toDouble());
     }
 
-    public IArithmeticable divideSBinary(SBinary other) {
+    public SBinary divideSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / (int) this.toDouble()));
     }
 }
