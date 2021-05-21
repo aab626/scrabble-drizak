@@ -7,14 +7,10 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SFloatTest {
-    private int seed;
-    private Random rng;
-
     private final double DOUBLE_PI = 3.14159265359;
     private SFloat sFloatPi;
 
@@ -30,9 +26,6 @@ class SFloatTest {
 
     @BeforeEach
     void setUp(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-
         sFloatPi = new SFloat(DOUBLE_PI);
 
         randomDouble = RandomUtils.randomDouble(DOUBLE_PI);
@@ -109,7 +102,7 @@ class SFloatTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void substractTest() {
+    void subtractTest() {
         assertEquals(new SFloat(randomDouble - randomDouble2), randomSFloat.subtract(randomSFloat2));
         assertEquals(new SFloat(randomDouble - randomInt), randomSFloat.subtract(randomSInt));
         assertEquals(new SFloat(randomDouble - BinaryUtils.toInt(randomBinaryString)), randomSFloat.subtract(randomSBinary));

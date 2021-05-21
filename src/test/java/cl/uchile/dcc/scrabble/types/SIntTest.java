@@ -7,14 +7,10 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SIntTest {
-    private int seed;
-    private Random rng;
-
     private final int INT_28 = 28;
     private SInt sInt28;
 
@@ -31,9 +27,6 @@ class SIntTest {
 
     @BeforeEach
     void setUp(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-
         sInt28 = new SInt(INT_28);
 
         randomInt = RandomUtils.randomInt(INT_28);
@@ -120,7 +113,7 @@ class SIntTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void substractTest() {
+    void subtractTest() {
         assertEquals(new SInt(randomInt - randomInt2), randomSInt.subtract(randomSInt2));
         assertEquals(new SFloat(randomInt - randomDouble), randomSInt.subtract(randomSFloat));
         assertEquals(new SInt(randomInt - BinaryUtils.toInt(randomBinaryString)), randomSInt.subtract(randomSBinary));

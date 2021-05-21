@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Objects;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,8 +32,6 @@ class SStringTest {
 
     @BeforeEach
     void setUp(){
-        Random rng = new Random(new Random().nextInt());
-
         sStringFixed = new SString(STRING_VALUE_FIXED);
 
         randomString = RandomUtils.randomString(STRING_VALUE_FIXED);

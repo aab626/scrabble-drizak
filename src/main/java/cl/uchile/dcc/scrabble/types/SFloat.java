@@ -92,12 +92,12 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
     }
 
     /**
-     * Operates with an integer version of the SFloat
+     * Extra implementation: Operates with a SFloat, and returns a SFloat.
      * {@inheritDoc}
      */
     @Override
-    public SBinary addSBinary(SBinary other) {
-        return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() + other.asSInt().toInt()));
+    public SFloat addSBinary(SBinary other) {
+        return new SFloat(this.toDouble() + other.asSInt().toInt());
     }
 
     @Override
@@ -116,12 +116,12 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
     }
 
     /**
-     * Operates with an integer (truncated double) version of the SFloat
+     * Extra implementation: Operates with a SFloat, and returns a SFloat.
      * {@inheritDoc}
      */
     @Override
-    public SBinary subtractSBinary(SBinary other) {
-        return new SBinary(BinaryUtils.intToBinary((int) -this.toDouble() + other.asSInt().toInt()));
+    public SFloat subtractSBinary(SBinary other) {
+        return new SFloat(-this.toDouble() + other.asSInt().toInt());
     }
 
     @Override
@@ -140,12 +140,12 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
     }
 
     /**
-     * Operates with an integer (truncated double) version of the SFloat
+     * Extra implementation: Operates with a SFloat, and returns a SFloat.
      * {@inheritDoc}
      */
     @Override
-    public SBinary multiplySBinary(SBinary other) {
-        return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() * other.asSInt().toInt()));
+    public SFloat multiplySBinary(SBinary other) {
+        return new SFloat(this.toDouble() * other.asSInt().toInt());
     }
 
     @Override
@@ -164,11 +164,11 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
     }
 
     /**
-     * Operates with an integer (truncated double) version of the SFloat
+     * Extra implementation: Operates with a SFloat, and returns a SFloat.
      * {@inheritDoc}
      */
     @Override
-    public SBinary divideSBinary(SBinary other) {
-        return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / (int) this.toDouble()));
+    public SFloat divideSBinary(SBinary other) {
+        return new SFloat(other.asSInt().toInt() / this.toDouble());
     }
 }

@@ -57,9 +57,9 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic SUBTRACTION operation, called by subtract when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return SBinary result of the (SBinary - IArithmeticOperable) operation
+     * @return Object result of the (SBinary - IArithmeticOperable) operation
      */
-    SBinary subtractSBinary(SBinary other);
+    IArithmeticOperable subtractSBinary(SBinary other);
 
     /**
      * Method to be called to perform a MULTIPLICATION operation
@@ -85,9 +85,9 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic MULTIPLICATION operation, called by multiply when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return SBinary result of the (SBinary * IArithmeticOperable) operation
+     * @return Object result of the (SBinary * IArithmeticOperable) operation
      */
-    SBinary multiplySBinary(SBinary other);
+    IArithmeticOperable multiplySBinary(SBinary other);
 
     /**
      * Method to be called to perform a DIVISION operation
@@ -113,7 +113,7 @@ public interface IArithmeticOperable {
     /**
      * Arithmetic DIVISION operation, called by divide when operated w/r to a SBinary
      * @param other SBinary to be operated with
-     * @return SBinary result of the (IArithmeticOperable / SBinary) operation
+     * @return Object result of the (IArithmeticOperable / SBinary) operation
      */
-    SBinary divideSBinary(SBinary other);
+    IArithmeticOperable divideSBinary(SBinary other);
 }

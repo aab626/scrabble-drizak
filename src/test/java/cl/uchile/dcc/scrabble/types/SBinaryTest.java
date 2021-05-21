@@ -12,9 +12,6 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SBinaryTest {
-    private int seed;
-    private Random rng;
-
     private SBinary sBinary150;
     private SBinary sBinary52;
     private SBinary randomSBinary, randomSBinary2;
@@ -33,9 +30,6 @@ class SBinaryTest {
 
     @BeforeEach
     void setUp(){
-        seed = new Random().nextInt();
-        rng = new Random(seed);
-
         sBinary150 = new SBinary(SBINARY_VALUE_150);
         sBinary52 = new SBinary(SBINARY_VALUE_52);
 
@@ -108,28 +102,28 @@ class SBinaryTest {
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void addTest() {
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) + randomInt)), randomSBinary.add(randomSInt));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) + (int) randomDouble)), randomSBinary.add(randomSFloat));
+        assertEquals(new SFloat(BinaryUtils.toInt(randomBinaryString) + randomDouble), randomSBinary.add(randomSFloat));
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) + BinaryUtils.toInt(randomBinaryString2))), randomSBinary.add(randomSBinary2));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void substractTest() {
+    void subtractTest() {
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - randomInt)), randomSBinary.subtract(randomSInt));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - (int) randomDouble)), randomSBinary.subtract(randomSFloat));
+        assertEquals(new SFloat(BinaryUtils.toInt(randomBinaryString) - randomDouble), randomSBinary.subtract(randomSFloat));
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - BinaryUtils.toInt(randomBinaryString2))), randomSBinary.subtract(randomSBinary2));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void multiplyTest() {
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) * randomInt)), randomSBinary.multiply(randomSInt));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) * (int) randomDouble)), randomSBinary.multiply(randomSFloat));
+        assertEquals(new SFloat(BinaryUtils.toInt(randomBinaryString) * randomDouble), randomSBinary.multiply(randomSFloat));
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) * BinaryUtils.toInt(randomBinaryString2))), randomSBinary.multiply(randomSBinary2));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void divideTest() {
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) / randomInt)), randomSBinary.divide(randomSInt));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) / (int) randomDouble)), randomSBinary.divide(randomSFloat));
+        assertEquals(new SFloat(BinaryUtils.toInt(randomBinaryString) / randomDouble), randomSBinary.divide(randomSFloat));
         assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) / BinaryUtils.toInt(randomBinaryString2))), randomSBinary.divide(randomSBinary2));
     }
 

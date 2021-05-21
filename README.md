@@ -13,4 +13,10 @@ _University of Chile_.
 
 ---
 
-**CC3002 - Scrabble**
+## CC3002 - Scrabble
+
+### Implementation details:
+* Binary types `SBinary` can be arithmetically operated with Float types `SFloat`,
+  but as the decimal part of Float type will carry on to the output, the output
+  type will be a `SFloat` too.
+  
