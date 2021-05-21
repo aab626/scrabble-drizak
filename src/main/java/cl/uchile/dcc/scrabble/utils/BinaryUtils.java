@@ -4,6 +4,7 @@ package cl.uchile.dcc.scrabble.utils;
 import cl.uchile.dcc.scrabble.types.SBinary;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.log;
 
 /** Class to store various utility methods related to SBinary operations */
 public class BinaryUtils {
@@ -232,6 +233,84 @@ public class BinaryUtils {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Transforms a positive integer into a binary string
+     * @param n Positive integer
+     * @return Binary string
+     */
+    private static String positiveIntToBinary(int n) {
+        int bits;
+        if (n == 0) {
+            return "0";
+        } else {
+            bits = 1 + (int) (log(n) / log(2));
+        }
+
+        StringBuilder sb = new StringBuilder();
+        int remainder = n;
+        int diff;
+        for (int j = bits-1; j >= 0; j--) {
+            diff = remainder - (int) Math.pow(2,j);
+            if (diff >= 0) {
+                remainder = diff;
+                sb.append("1");
+            } else {
+                sb.append("0");
+            }
+        }
+
+        sb.insert(0, "0");
+        return sb.toString();
+    }
+
+    /**
+     * @param binary Binary string
+     * @return Two's Complement of a binary number
+     */
+    private static String twosComplement(String binary) {
+        String inverted = invertBinary(binary);
+        return add1ToBinary(inverted);
+
+    }
+
+    /**
+     * Returns the sum of a binary with binary 1
+     * @param binary Binary string
+     * @return Binary string
+     */
+    private static String add1ToBinary(String binary) {
+        StringBuilder sb = new StringBuilder();
+        boolean remainder = true;
+
+        for (int i = binary.length()-1; i >= 0; i--) {
+            if (remainder) {
+                if (binary.charAt(i) == '1') {
+                    sb.append("0");
+                } else {
+                    sb.append("1");
+                    remainder = false;
+                }
+            } else {
+                sb.append(binary.charAt(i));
+            }
+        }
+
+        return sb.reverse().toString();
+    }
+
+    /**
+     * Returns the binary representation of an integer (positive or negative)
+     * @param n integer to transform
+     * @return Binary string
+     */
+    public static String intToBinary(int n) {
+        String binary = positiveIntToBinary(abs(n));
+        if (n < 0) {
+            binary = twosComplement(binary);
+        }
+        return binary;
     }
 
 }

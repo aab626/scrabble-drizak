@@ -1,13 +1,14 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+import javafx.scene.control.IndexRange;
 
 import java.util.Objects;
 
 import static java.lang.Math.abs;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary implements IConcatenable, ILogicable {
+public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
     private String value;
 
     /**
@@ -79,6 +80,100 @@ public class SBinary implements IConcatenable, ILogicable {
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
     }
+
+    public IArithmeticable add(IArithmeticable other) {
+        return other.addSBinary(this);
+    }
+
+    public IArithmeticable addSInt(SInt other) {
+        return new SInt(this.asSInt().toInt() + other.toInt());
+    }
+
+    public IArithmeticable addSFloat(SFloat other) {
+        return new SFloat(this.asSInt().toInt() + other.toDouble());
+    }
+
+    public IArithmeticable addSBinary(SBinary other) {
+        int integer1 = this.asSInt().toInt();
+        int integer2 = other.asSInt().toInt();
+        String binary = BinaryUtils.intToBinary(integer1 + integer2);
+        return new SBinary(binary);
+    }
+
+    public IArithmeticable substract(IArithmeticable other) {
+        return other.substractSBinary(this);
+    }
+
+    public IArithmeticable substractSInt(SInt other) {
+        return new SInt(-this.asSInt().toInt() + other.toInt());
+    }
+
+    public IArithmeticable substractSFloat(SFloat other) {
+        return new SFloat(-this.asSInt().toInt() + other.toDouble());
+    }
+
+    public IArithmeticable substractSBinary(SBinary other) {
+        int integer1 = this.asSInt().toInt();
+        int integer2 = other.asSInt().toInt();
+        String binary = BinaryUtils.intToBinary(-integer1 + integer2);
+        return new SBinary(binary);
+    }
+
+    public IArithmeticable multiply(IArithmeticable other) {
+        return other.multiplySBinary(this);
+    }
+
+    public IArithmeticable multiplySInt(SInt other) {
+        return new SInt(this.asSInt().toInt() * other.toInt());
+    }
+
+    public IArithmeticable multiplySFloat(SFloat other) {
+        return new SFloat(this.asSInt().toInt() * other.toDouble());
+    }
+
+    public IArithmeticable multiplySBinary(SBinary other) {
+        int integer1 = this.asSInt().toInt();
+        int integer2 = other.asSInt().toInt();
+        String binary = BinaryUtils.intToBinary(integer1 * integer2);
+        return new SBinary(binary);
+    }
+
+    public IArithmeticable divide(IArithmeticable other) {
+        return other.divideSBinary(this);
+    }
+
+    public IArithmeticable divideSInt(SInt other) {
+        return new SInt(other.toInt() / this.asSInt().toInt());
+    }
+
+    public IArithmeticable divideSFloat(SFloat other) {
+        return new SFloat(other.toDouble() / this.asSInt().toInt());
+    }
+
+    public IArithmeticable divideSBinary(SBinary other) {
+        int integer1 = this.asSInt().toInt();
+        int integer2 = other.asSInt().toInt();
+        String binary = BinaryUtils.intToBinary(integer2 / integer1);
+        return new SBinary(binary);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public SBinary not() {
         return new SBinary(BinaryUtils.invertBinary(this.toString()));

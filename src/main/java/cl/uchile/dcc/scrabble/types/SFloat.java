@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.types;
 
+import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
@@ -85,6 +87,11 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return new SFloat(this.toDouble() + other.toDouble());
     }
 
+    // todo add dummy explications
+    public IArithmeticable addSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() + other.asSInt().toInt()));
+    }
+
     public IArithmeticable substract(IArithmeticable other) {
         return other.substractSFloat(this);
     }
@@ -95,6 +102,10 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
 
     public IArithmeticable substractSFloat(SFloat other) {
         return new SFloat(-this.toDouble() + other.toDouble());
+    }
+
+    public IArithmeticable substractSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary((int) -this.toDouble() + other.asSInt().toInt()));
     }
 
     public IArithmeticable multiply(IArithmeticable other) {
@@ -109,6 +120,10 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return new SFloat(this.toDouble() * other.toDouble());
     }
 
+    public IArithmeticable multiplySBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() * other.asSInt().toInt()));
+    }
+
     public IArithmeticable divide(IArithmeticable other) {
         return other.divideSFloat(this);
     }
@@ -119,5 +134,9 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
 
     public IArithmeticable divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.toDouble());
+    }
+
+    public IArithmeticable divideSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / (int) this.toDouble()));
     }
 }

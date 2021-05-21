@@ -3,6 +3,7 @@ package cl.uchile.dcc.scrabble.types;
 import cl.uchile.dcc.scrabble.types.SFloat;
 import cl.uchile.dcc.scrabble.types.SInt;
 import cl.uchile.dcc.scrabble.types.SString;
+import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -26,6 +27,9 @@ class SFloatTest {
     private int randomInt;
     private SInt randomSInt;
 
+    private String randomBinaryString;
+    private SBinary randomSBinary;
+
 
     @BeforeEach
     void setUp(){
@@ -42,6 +46,9 @@ class SFloatTest {
 
         randomInt = RandomUtils.randomInt(0);
         randomSInt = new SInt(randomInt);
+
+        randomBinaryString = RandomUtils.randomBinaryString("0");
+        randomSBinary = new SBinary(randomBinaryString);
     }
 
     @Test
@@ -101,23 +108,27 @@ class SFloatTest {
     void addTest() {
         assertEquals(new SFloat(randomDouble + randomDouble2), randomSFloat.add(randomSFloat2));
         assertEquals(new SFloat(randomDouble + randomInt), randomSFloat.add(randomSInt));
+        assertEquals(new SFloat(randomDouble + BinaryUtils.toInt(randomBinaryString)), randomSFloat.add(randomSBinary));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void substractTest() {
         assertEquals(new SFloat(randomDouble - randomDouble2), randomSFloat.substract(randomSFloat2));
         assertEquals(new SFloat(randomDouble - randomInt), randomSFloat.substract(randomSInt));
+        assertEquals(new SFloat(randomDouble - BinaryUtils.toInt(randomBinaryString)), randomSFloat.substract(randomSBinary));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void multiplyTest() {
         assertEquals(new SFloat(randomDouble * randomDouble2), randomSFloat.multiply(randomSFloat2));
         assertEquals(new SFloat(randomDouble * randomInt), randomSFloat.multiply(randomSInt));
+        assertEquals(new SFloat(randomDouble * BinaryUtils.toInt(randomBinaryString)), randomSFloat.multiply(randomSBinary));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void divideTest() {
         assertEquals(new SFloat(randomDouble / randomDouble2), randomSFloat.divide(randomSFloat2));
         assertEquals(new SFloat(randomDouble / randomInt), randomSFloat.divide(randomSInt));
+        assertEquals(new SFloat(randomDouble / BinaryUtils.toInt(randomBinaryString)), randomSFloat.divide(randomSBinary));
     }
 }

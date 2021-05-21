@@ -1,5 +1,7 @@
 package cl.uchile.dcc.scrabble.types;
 
+import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
@@ -76,9 +78,10 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SString(this.toString());
     }
 
-    // todo implementar transformacion: sint -> sbin
-//    public SBinary asSBinary() {
-//    }
+    /** @return SBinary containing the internal int value (as a binary string) */
+    public SBinary asSBinary() {
+        return new SBinary(BinaryUtils.intToBinary(this.toInt()));
+    }
 
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
@@ -96,6 +99,10 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SFloat(this.toInt() + other.toDouble());
     }
 
+    public IArithmeticable addSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary(this.toInt() + other.asSInt().toInt()));
+    }
+
     public IArithmeticable substract(IArithmeticable other) {
         return other.substractSInt(this);
     }
@@ -106,6 +113,10 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
 
     public IArithmeticable substractSFloat(SFloat other) {
         return new SFloat(-this.toInt() + other.toDouble());
+    }
+
+    public IArithmeticable substractSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary(-this.toInt() + other.asSInt().toInt()));
     }
 
     public IArithmeticable multiply(IArithmeticable other) {
@@ -120,6 +131,10 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SFloat(this.toInt() * other.toDouble());
     }
 
+    public IArithmeticable multiplySBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary(this.toInt() * other.asSInt().toInt()));
+    }
+
     public IArithmeticable divide(IArithmeticable other) {
         return other.divideSInt(this);
     }
@@ -130,6 +145,10 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
 
     public IArithmeticable divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.toInt());
+    }
+
+    public IArithmeticable divideSBinary(SBinary other) {
+        return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / this.toInt()));
     }
 
 
