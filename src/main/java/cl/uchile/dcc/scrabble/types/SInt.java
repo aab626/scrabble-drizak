@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
+public class SInt extends SBaseType implements IConcatenable, IArithmeticOperable {
     private int value;
 
     /**
@@ -87,7 +87,7 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SString(other.toString() + this.toString());
     }
 
-    public IArithmeticable add(IArithmeticable other) {
+    public IArithmeticOperable add(IArithmeticOperable other) {
         return other.addSInt(this);
     }
 
@@ -103,23 +103,23 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SBinary(BinaryUtils.intToBinary(this.toInt() + other.asSInt().toInt()));
     }
 
-    public IArithmeticable substract(IArithmeticable other) {
-        return other.substractSInt(this);
+    public IArithmeticOperable subtract(IArithmeticOperable other) {
+        return other.subtractSInt(this);
     }
 
-    public SInt substractSInt(SInt other) {
+    public SInt subtractSInt(SInt other) {
         return new SInt(-this.toInt() + other.toInt());
     }
 
-    public SFloat substractSFloat(SFloat other) {
+    public SFloat subtractSFloat(SFloat other) {
         return new SFloat(-this.toInt() + other.toDouble());
     }
 
-    public SBinary substractSBinary(SBinary other) {
+    public SBinary subtractSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(-this.toInt() + other.asSInt().toInt()));
     }
 
-    public IArithmeticable multiply(IArithmeticable other) {
+    public IArithmeticOperable multiply(IArithmeticOperable other) {
         return other.multiplySInt(this);
     }
 
@@ -135,7 +135,7 @@ public class SInt extends SBaseType implements IConcatenable, IArithmeticable{
         return new SBinary(BinaryUtils.intToBinary(this.toInt() * other.asSInt().toInt()));
     }
 
-    public IArithmeticable divide(IArithmeticable other) {
+    public IArithmeticOperable divide(IArithmeticOperable other) {
         return other.divideSInt(this);
     }
 

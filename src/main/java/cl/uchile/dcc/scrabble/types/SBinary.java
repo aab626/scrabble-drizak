@@ -1,14 +1,13 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
-import javafx.scene.control.IndexRange;
 
 import java.util.Objects;
 
 import static java.lang.Math.abs;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
+public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperable {
     private String value;
 
     /**
@@ -81,7 +80,7 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return new SString(other.toString() + this.toString());
     }
 
-    public IArithmeticable add(IArithmeticable other) {
+    public IArithmeticOperable add(IArithmeticOperable other) {
         return other.addSBinary(this);
     }
 
@@ -100,26 +99,26 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return new SBinary(binary);
     }
 
-    public IArithmeticable substract(IArithmeticable other) {
-        return other.substractSBinary(this);
+    public IArithmeticOperable subtract(IArithmeticOperable other) {
+        return other.subtractSBinary(this);
     }
 
-    public SInt substractSInt(SInt other) {
+    public SInt subtractSInt(SInt other) {
         return new SInt(-this.asSInt().toInt() + other.toInt());
     }
 
-    public SFloat substractSFloat(SFloat other) {
+    public SFloat subtractSFloat(SFloat other) {
         return new SFloat(-this.asSInt().toInt() + other.toDouble());
     }
 
-    public SBinary substractSBinary(SBinary other) {
+    public SBinary subtractSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
         String binary = BinaryUtils.intToBinary(-integer1 + integer2);
         return new SBinary(binary);
     }
 
-    public IArithmeticable multiply(IArithmeticable other) {
+    public IArithmeticOperable multiply(IArithmeticOperable other) {
         return other.multiplySBinary(this);
     }
 
@@ -138,7 +137,7 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return new SBinary(binary);
     }
 
-    public IArithmeticable divide(IArithmeticable other) {
+    public IArithmeticOperable divide(IArithmeticOperable other) {
         return other.divideSBinary(this);
     }
 
@@ -161,7 +160,7 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return new SBinary(BinaryUtils.invertBinary(this.toString()));
     }
 
-    public ILogicable and(ILogicable other) {
+    public ILogicOperable and(ILogicOperable other) {
         return other.andSBinary(this);
     }
 
@@ -173,7 +172,7 @@ public class SBinary implements IArithmeticable, IConcatenable, ILogicable {
         return new SBinary(BinaryUtils.andBinaries(this.toString(), other.toString()));
     }
 
-    public ILogicable or(ILogicable other) {
+    public ILogicOperable or(ILogicOperable other) {
         return other.orSBinary(this);
     }
 

@@ -1,8 +1,5 @@
 package cl.uchile.dcc.scrabble.types;
 
-import cl.uchile.dcc.scrabble.types.SFloat;
-import cl.uchile.dcc.scrabble.types.SInt;
-import cl.uchile.dcc.scrabble.types.SString;
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -113,9 +110,9 @@ class SFloatTest {
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void substractTest() {
-        assertEquals(new SFloat(randomDouble - randomDouble2), randomSFloat.substract(randomSFloat2));
-        assertEquals(new SFloat(randomDouble - randomInt), randomSFloat.substract(randomSInt));
-        assertEquals(new SFloat(randomDouble - BinaryUtils.toInt(randomBinaryString)), randomSFloat.substract(randomSBinary));
+        assertEquals(new SFloat(randomDouble - randomDouble2), randomSFloat.subtract(randomSFloat2));
+        assertEquals(new SFloat(randomDouble - randomInt), randomSFloat.subtract(randomSInt));
+        assertEquals(new SFloat(randomDouble - BinaryUtils.toInt(randomBinaryString)), randomSFloat.subtract(randomSBinary));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)

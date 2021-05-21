@@ -121,9 +121,9 @@ class SIntTest {
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void substractTest() {
-        assertEquals(new SInt(randomInt - randomInt2), randomSInt.substract(randomSInt2));
-        assertEquals(new SFloat(randomInt - randomDouble), randomSInt.substract(randomSFloat));
-        assertEquals(new SInt(randomInt - BinaryUtils.toInt(randomBinaryString)), randomSInt.substract(randomSBinary));
+        assertEquals(new SInt(randomInt - randomInt2), randomSInt.subtract(randomSInt2));
+        assertEquals(new SFloat(randomInt - randomDouble), randomSInt.subtract(randomSFloat));
+        assertEquals(new SInt(randomInt - BinaryUtils.toInt(randomBinaryString)), randomSInt.subtract(randomSBinary));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)

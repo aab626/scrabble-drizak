@@ -1,6 +1,5 @@
 package cl.uchile.dcc.scrabble.types;
 
-import cl.uchile.dcc.scrabble.types.SString;
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -115,9 +114,9 @@ class SBinaryTest {
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void substractTest() {
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - randomInt)), randomSBinary.substract(randomSInt));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - (int) randomDouble)), randomSBinary.substract(randomSFloat));
-        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - BinaryUtils.toInt(randomBinaryString2))), randomSBinary.substract(randomSBinary2));
+        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - randomInt)), randomSBinary.subtract(randomSInt));
+        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - (int) randomDouble)), randomSBinary.subtract(randomSFloat));
+        assertEquals(new SBinary(BinaryUtils.intToBinary(BinaryUtils.toInt(randomBinaryString) - BinaryUtils.toInt(randomBinaryString2))), randomSBinary.subtract(randomSBinary2));
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)

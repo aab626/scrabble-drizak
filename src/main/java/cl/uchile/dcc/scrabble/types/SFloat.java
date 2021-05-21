@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
-public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
+public class SFloat extends SBaseType implements IConcatenable, IArithmeticOperable {
     private double value;
 
     /**
@@ -75,7 +75,7 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return new SString(other.toString() + this.toString());
     }
 
-    public IArithmeticable add(IArithmeticable other) {
+    public IArithmeticOperable add(IArithmeticOperable other) {
         return other.addSFloat(this);
     }
 
@@ -92,23 +92,23 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() + other.asSInt().toInt()));
     }
 
-    public IArithmeticable substract(IArithmeticable other) {
-        return other.substractSFloat(this);
+    public IArithmeticOperable subtract(IArithmeticOperable other) {
+        return other.subtractSFloat(this);
     }
 
-    public SFloat substractSInt(SInt other) {
+    public SFloat subtractSInt(SInt other) {
         return new SFloat(-this.toDouble() + other.toInt());
     }
 
-    public SFloat substractSFloat(SFloat other) {
+    public SFloat subtractSFloat(SFloat other) {
         return new SFloat(-this.toDouble() + other.toDouble());
     }
 
-    public SBinary substractSBinary(SBinary other) {
+    public SBinary subtractSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary((int) -this.toDouble() + other.asSInt().toInt()));
     }
 
-    public IArithmeticable multiply(IArithmeticable other) {
+    public IArithmeticOperable multiply(IArithmeticOperable other) {
         return other.multiplySFloat(this);
     }
 
@@ -124,7 +124,7 @@ public class SFloat extends SBaseType implements IConcatenable, IArithmeticable{
         return new SBinary(BinaryUtils.intToBinary((int) this.toDouble() * other.asSInt().toInt()));
     }
 
-    public IArithmeticable divide(IArithmeticable other) {
+    public IArithmeticOperable divide(IArithmeticOperable other) {
         return other.divideSFloat(this);
     }
 
