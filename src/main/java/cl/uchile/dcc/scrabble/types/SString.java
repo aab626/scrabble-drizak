@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
 import java.util.Objects;
 
 /** Represents an internal String type for Scrabble */
-public class SString {
+public class SString extends SBaseType {
     private String value;
 
     /**
@@ -54,5 +54,16 @@ public class SString {
     /** @return a copy of this SString */
     public SString copy() {
         return new SString(this.toString());
+    }
+
+    /**
+     * Concatenates this SString with a Scrabble Type
+     * @param other Another instance of a Scrabble Type
+     * @return a new SString with the concatenated string of the original SString value
+     * and the String representation of the other type
+     */
+    public SString concatenate(SBaseType other) {
+        String newString = this.toString() + other.toString();
+        return new SString(newString);
     }
 }

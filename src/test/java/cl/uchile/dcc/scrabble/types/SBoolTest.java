@@ -1,6 +1,10 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
+import cl.uchile.dcc.scrabble.types.SBool;
+import cl.uchile.dcc.scrabble.types.SString;
+import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
@@ -14,22 +18,26 @@ class SBoolTest {
     private SBool sBoolTrue;
     private SBool sBoolFalse;
 
+    private boolean randomBoolean;
+    private SBool randomSBool;
+
     @BeforeEach
     void setUp(){
         sBoolTrue = new SBool(VALUE_TRUE);
         sBoolFalse = new SBool(VALUE_FALSE);
+
+        randomBoolean = RandomUtils.randomBool();
+        randomSBool = new SBool(randomBoolean);
     }
 
-    @Test
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void constructorTest(){
-        assertEquals(new SBool(VALUE_TRUE), sBoolTrue);
-        assertEquals(new SBool(VALUE_FALSE), sBoolFalse);
+        assertEquals(new SBool(randomBoolean), randomSBool);
     }
 
-    @Test
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void toBoolTest() {
-        assertEquals(VALUE_TRUE, sBoolTrue.toBool());
-        assertEquals(VALUE_FALSE, sBoolFalse.toBool());
+        assertEquals(randomBoolean, randomSBool.toBool());
     }
 
     @Test
@@ -55,25 +63,19 @@ class SBoolTest {
         assertEquals(Objects.hashCode(SBool.class), sBoolFalse.hashCode());
     }
 
-    @Test
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void toStringTest(){
-        assertEquals(String.valueOf(VALUE_TRUE), sBoolTrue.toString());
-        assertEquals(String.valueOf(VALUE_FALSE), sBoolFalse.toString());
+        assertEquals(String.valueOf(randomBoolean), randomSBool.toString());
     }
 
-    @Test
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void copyTest(){
-        assertEquals(sBoolTrue, sBoolTrue.copy());
-        assertNotEquals(sBoolFalse, sBoolTrue.copy());
-
-        assertEquals(sBoolFalse, sBoolFalse.copy());
-        assertNotEquals(sBoolTrue, sBoolFalse.copy());
+        assertEquals(randomSBool, randomSBool.copy());
     }
 
-    @Test
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
-        assertEquals(new SString(String.valueOf(VALUE_TRUE)), sBoolTrue.asSString());
-        assertEquals(new SString(String.valueOf(VALUE_FALSE)), sBoolFalse.asSString());
+        assertEquals(new SString(String.valueOf(randomBoolean)), randomSBool.asSString());
     }
 
 

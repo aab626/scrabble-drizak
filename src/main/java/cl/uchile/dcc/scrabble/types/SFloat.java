@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
-public class SFloat {
+public class SFloat extends SBaseType implements IArithmeticable{
     private double value;
 
     /**
@@ -67,5 +67,53 @@ public class SFloat {
     /** @return SString containing the internal double (as a String) */
     public SString asSString(){
         return new SString(this.toString());
+    }
+
+    public IArithmeticable add(IArithmeticable other) {
+        return other.addSFloat(this);
+    }
+
+    public IArithmeticable addSInt(SInt other) {
+        return new SFloat(this.toDouble() + other.toInt());
+    }
+
+    public IArithmeticable addSFloat(SFloat other) {
+        return new SFloat(this.toDouble() + other.toDouble());
+    }
+
+    public IArithmeticable substract(IArithmeticable other) {
+        return other.substractSFloat(this);
+    }
+
+    public IArithmeticable substractSInt(SInt other) {
+        return new SFloat(-this.toDouble() + other.toInt());
+    }
+
+    public IArithmeticable substractSFloat(SFloat other) {
+        return new SFloat(-this.toDouble() + other.toDouble());
+    }
+
+    public IArithmeticable multiply(IArithmeticable other) {
+        return other.multiplySFloat(this);
+    }
+
+    public IArithmeticable multiplySInt(SInt other) {
+        return new SFloat(this.toDouble() * other.toInt());
+    }
+
+    public IArithmeticable multiplySFloat(SFloat other) {
+        return new SFloat(this.toDouble() * other.toDouble());
+    }
+
+    public IArithmeticable divide(IArithmeticable other) {
+        return other.divideSFloat(this);
+    }
+
+    public IArithmeticable divideSInt(SInt other) {
+        return new SFloat(other.toInt() / this.toDouble());
+    }
+
+    public IArithmeticable divideSFloat(SFloat other) {
+        return new SFloat(other.toDouble() / this.toDouble());
     }
 }

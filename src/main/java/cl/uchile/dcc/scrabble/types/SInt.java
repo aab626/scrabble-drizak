@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt {
+public class SInt extends SBaseType implements IArithmeticable{
     private int value;
 
     /**
@@ -79,5 +79,55 @@ public class SInt {
     // todo implementar transformacion: sint -> sbin
 //    public SBinary asSBinary() {
 //    }
+
+    public IArithmeticable add(IArithmeticable other) {
+        return other.addSInt(this);
+    }
+
+    public IArithmeticable addSInt(SInt other) {
+        return new SInt(this.toInt() + other.toInt());
+    }
+
+    public IArithmeticable addSFloat(SFloat other) {
+        return new SFloat(this.toInt() + other.toDouble());
+    }
+
+    public IArithmeticable substract(IArithmeticable other) {
+        return other.substractSInt(this);
+    }
+
+    public IArithmeticable substractSInt(SInt other) {
+        return new SInt(-this.toInt() + other.toInt());
+    }
+
+    public IArithmeticable substractSFloat(SFloat other) {
+        return new SFloat(-this.toInt() + other.toDouble());
+    }
+
+    public IArithmeticable multiply(IArithmeticable other) {
+        return other.multiplySInt(this);
+    }
+
+    public IArithmeticable multiplySInt(SInt other) {
+        return new SInt(this.toInt() * other.toInt());
+    }
+
+    public IArithmeticable multiplySFloat(SFloat other) {
+        return new SFloat(this.toInt() * other.toDouble());
+    }
+
+    public IArithmeticable divide(IArithmeticable other) {
+        return other.divideSInt(this);
+    }
+
+    public IArithmeticable divideSInt(SInt other) {
+        return new SInt(other.toInt() / this.toInt());
+    }
+
+    public IArithmeticable divideSFloat(SFloat other) {
+        return new SFloat(other.toDouble() / this.toInt());
+    }
+
+
 
 }

@@ -1,5 +1,7 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
+import cl.uchile.dcc.scrabble.types.SString;
+import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -31,27 +33,10 @@ class SBinaryTest {
         sBinary150 = new SBinary(SBINARY_VALUE_150);
         sBinary52 = new SBinary(SBINARY_VALUE_52);
 
-        // Construir un string random de 8 caracteres compuesto por 0s y 1s, distinto de SBINARY_VALUE_150
-        int strSize = rng.nextInt(8-1)+1;
-
-        do {
-            StringBuilder sb = new StringBuilder(strSize);
-            for (int i = 0; i < strSize; i++) {
-                char bit = BINARY_CHARS[rng.nextInt(BINARY_CHARS.length)];
-                sb.append(bit);
-            }
-            randomBinaryString = sb.toString();
-        } while (randomBinaryString.equals(SBINARY_VALUE_150));
+        randomBinaryString = RandomUtils.randomBinaryString(SBINARY_VALUE_150);
         randomSBinary = new SBinary(randomBinaryString);
 
-        // Construir un string random de 8 caracteres compuesto por cualquier cualquier digito excepto 0 y 1
-        StringBuilder sb = new StringBuilder(strSize);
-        for (int i = 0; i < strSize; i++) {
-            char bit = NONBINARY_CHARS[rng.nextInt(NONBINARY_CHARS.length)];
-            sb.append(bit);
-        }
-        randomNonBinaryString = sb.toString();
-
+        randomNonBinaryString = RandomUtils.randomNonBinaryString();
     }
 
     @Test
@@ -92,6 +77,5 @@ class SBinaryTest {
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
         assertEquals(new SString(randomBinaryString), randomSBinary.asSString());
-
     }
 }

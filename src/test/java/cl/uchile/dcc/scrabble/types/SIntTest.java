@@ -1,5 +1,6 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
+import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,12 @@ class SIntTest {
     private final int INT_28 = 28;
     private SInt sInt28;
 
-    private int randomInt;
-    private SInt randomSInt;
+    private int randomInt, randomInt2;
+    private SInt randomSInt, randomSInt2;
 
     private double randomDouble;
+    private SFloat randomSFloat;
+
 
 
     @BeforeEach
@@ -29,15 +32,15 @@ class SIntTest {
 
         sInt28 = new SInt(INT_28);
 
-        // Genera un int al azar distinto de INT_28
-        do {
-            randomInt = rng.nextInt();
-        } while(randomInt == INT_28);
+        randomInt = RandomUtils.randomInt(INT_28);
         randomSInt = new SInt(randomInt);
 
-        do {
-            randomDouble = rng.nextDouble();
-        } while (randomDouble == (double) INT_28);
+        randomInt2 = RandomUtils.randomInt(0);
+        randomSInt2 = new SInt(randomInt2);
+
+        randomDouble = RandomUtils.randomDouble((double) INT_28);
+        randomSFloat = new SFloat(randomDouble);
+
     }
 
     @Test
@@ -96,5 +99,30 @@ class SIntTest {
     void asSFloatTest(){
         assertEquals(new SFloat((double) randomInt), randomSInt.asSFloat());
     }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void addTest() {
+        assertEquals(new SInt(randomInt + randomInt2), randomSInt.add(randomSInt2));
+        assertEquals(new SFloat(randomInt + randomDouble), randomSInt.add(randomSFloat));
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void substractTest() {
+        assertEquals(new SInt(randomInt - randomInt2), randomSInt.substract(randomSInt2));
+        assertEquals(new SFloat(randomInt - randomDouble), randomSInt.substract(randomSFloat));
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void multiplyTest() {
+        assertEquals(new SInt(randomInt * randomInt2), randomSInt.multiply(randomSInt2));
+        assertEquals(new SFloat(randomInt * randomDouble), randomSInt.multiply(randomSFloat));
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void divideTest() {
+        assertEquals(new SInt(randomInt / randomInt2), randomSInt.divide(randomSInt2));
+//        assertEquals(new SFloat(randomInt / randomDouble), randomSInt.divide(randomSFloat));
+    }
+
 
 }

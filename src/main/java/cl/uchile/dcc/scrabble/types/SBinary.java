@@ -1,9 +1,11 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
+
+import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 
 import java.util.Objects;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary {
+public class SBinary extends SBaseType {
     private String value;
 
     /**
@@ -62,12 +64,14 @@ public class SBinary {
         return new SString(this.toString());
     }
 
-//    public SFloat asSFloat() {
-//        // todo imeplementar transformacion sbin -> sfloat
-//    }
-//
-//    public SInt asSInt() {
-//        // todo implementar transformacion sbin -> sint
-//    }
+    /** @return SFloat containing the decimal representation of the binary string */
+    public SFloat asSFloat() {
+        return new SFloat((double) BinaryUtils.toInt(this.toString()));
+    }
+
+    /** @return SInt containing the decimal representation of the binary string */
+    public SInt asSInt() {
+        return new SInt(BinaryUtils.toInt(this.toString()));
+    }
 
 }

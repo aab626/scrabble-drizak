@@ -1,9 +1,9 @@
-package cl.uchile.dcc.scrabble;
+package cl.uchile.dcc.scrabble.types;
 
 import java.util.Objects;
 
 /** Represents an internal Boolean type for Scrabble */
-public class SBool {
+public class SBool extends SBaseType {
     private boolean value;
 
     /**
