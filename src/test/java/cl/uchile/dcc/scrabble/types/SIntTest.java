@@ -121,7 +121,7 @@ class SIntTest {
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void divideTest() {
         assertEquals(new SInt(randomInt / randomInt2), randomSInt.divide(randomSInt2));
-//        assertEquals(new SFloat(randomInt / randomDouble), randomSInt.divide(randomSFloat));
+        assertEquals(new SFloat(randomInt / randomDouble), randomSInt.divide(randomSFloat));
     }
 
 

@@ -60,6 +60,7 @@ class SStringTest {
         assertEquals(new SString(STRING_VALUE_FIXED), sStringFixed);
         assertNotEquals(new SString(STRING_VALUE_FIXED +"!"), sStringFixed);
         assertNotEquals(STRING_VALUE_FIXED, sStringFixed);
+        assertNotEquals(sStringFixed, randomSInt);
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)

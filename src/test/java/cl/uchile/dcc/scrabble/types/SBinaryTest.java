@@ -1,6 +1,7 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.types.SString;
+import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -24,6 +25,7 @@ class SBinaryTest {
     private String randomNonBinaryString;
     private final char[] BINARY_CHARS = "01".toCharArray();
     private final char[] NONBINARY_CHARS = "23456789".toCharArray();
+    private int randomInt;
 
     @BeforeEach
     void setUp(){
@@ -77,5 +79,15 @@ class SBinaryTest {
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void asSStringTest(){
         assertEquals(new SString(randomBinaryString), randomSBinary.asSString());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void asSFloatTest() {
+        assertEquals(new SFloat(BinaryUtils.toInt(randomBinaryString)), (new SBinary(randomBinaryString)).asSFloat());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void asSIntTest() {
+        assertEquals(new SInt(BinaryUtils.toInt(randomBinaryString)), (new SBinary(randomBinaryString)).asSInt());
     }
 }
