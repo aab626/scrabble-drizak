@@ -83,70 +83,87 @@ public class SInt implements IConcatenable, IArithmeticOperable {
         return new SBinary(BinaryUtils.intToBinary(this.toInt()));
     }
 
+    @Override
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
     }
 
+    @Override
     public IArithmeticOperable add(IArithmeticOperable other) {
         return other.addSInt(this);
     }
 
+    @Override
     public SInt addSInt(SInt other) {
         return new SInt(this.toInt() + other.toInt());
     }
 
+    @Override
     public SFloat addSFloat(SFloat other) {
         return new SFloat(this.toInt() + other.toDouble());
     }
 
+    @Override
     public SBinary addSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(this.toInt() + other.asSInt().toInt()));
     }
 
+    @Override
     public IArithmeticOperable subtract(IArithmeticOperable other) {
         return other.subtractSInt(this);
     }
 
+    @Override
     public SInt subtractSInt(SInt other) {
         return new SInt(-this.toInt() + other.toInt());
     }
 
+    @Override
     public SFloat subtractSFloat(SFloat other) {
         return new SFloat(-this.toInt() + other.toDouble());
     }
 
+    @Override
     public SBinary subtractSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(-this.toInt() + other.asSInt().toInt()));
     }
 
+    @Override
     public IArithmeticOperable multiply(IArithmeticOperable other) {
         return other.multiplySInt(this);
     }
 
+    @Override
     public SInt multiplySInt(SInt other) {
         return new SInt(this.toInt() * other.toInt());
     }
 
+    @Override
     public SFloat multiplySFloat(SFloat other) {
         return new SFloat(this.toInt() * other.toDouble());
     }
 
+    @Override
     public SBinary multiplySBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(this.toInt() * other.asSInt().toInt()));
     }
 
+    @Override
     public IArithmeticOperable divide(IArithmeticOperable other) {
         return other.divideSInt(this);
     }
 
+    @Override
     public SInt divideSInt(SInt other) {
         return new SInt(other.toInt() / this.toInt());
     }
 
+    @Override
     public SFloat divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.toInt());
     }
 
+    @Override
     public SBinary divideSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / this.toInt()));
     }

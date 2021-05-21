@@ -36,7 +36,7 @@ class SBoolTest {
         randomSBool = new SBool(randomBoolean);
         randomSBool2 = new SBool(randomBoolean2);
 
-        randomBinaryString = RandomUtils.randomBinaryString("");
+        randomBinaryString = RandomUtils.randomBinaryString(0);
         randomSBinary = new SBinary(randomBinaryString);
     }
 

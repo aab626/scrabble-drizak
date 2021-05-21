@@ -44,7 +44,7 @@ class SFloatTest {
         randomInt = RandomUtils.randomInt(0);
         randomSInt = new SInt(randomInt);
 
-        randomBinaryString = RandomUtils.randomBinaryString("0");
+        randomBinaryString = RandomUtils.randomBinaryString(0);
         randomSBinary = new SBinary(randomBinaryString);
     }
 

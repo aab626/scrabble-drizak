@@ -76,22 +76,27 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SInt(BinaryUtils.toInt(this.toString()));
     }
 
+    @Override
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
     }
 
+    @Override
     public IArithmeticOperable add(IArithmeticOperable other) {
         return other.addSBinary(this);
     }
 
+    @Override
     public SInt addSInt(SInt other) {
         return new SInt(this.asSInt().toInt() + other.toInt());
     }
 
+    @Override
     public SFloat addSFloat(SFloat other) {
         return new SFloat(this.asSInt().toInt() + other.toDouble());
     }
 
+    @Override
     public SBinary addSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
@@ -99,18 +104,22 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SBinary(binary);
     }
 
+    @Override
     public IArithmeticOperable subtract(IArithmeticOperable other) {
         return other.subtractSBinary(this);
     }
 
+    @Override
     public SInt subtractSInt(SInt other) {
         return new SInt(-this.asSInt().toInt() + other.toInt());
     }
 
+    @Override
     public SFloat subtractSFloat(SFloat other) {
         return new SFloat(-this.asSInt().toInt() + other.toDouble());
     }
 
+    @Override
     public SBinary subtractSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
@@ -118,18 +127,22 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SBinary(binary);
     }
 
+    @Override
     public IArithmeticOperable multiply(IArithmeticOperable other) {
         return other.multiplySBinary(this);
     }
 
+    @Override
     public SInt multiplySInt(SInt other) {
         return new SInt(this.asSInt().toInt() * other.toInt());
     }
 
+    @Override
     public SFloat multiplySFloat(SFloat other) {
         return new SFloat(this.asSInt().toInt() * other.toDouble());
     }
 
+    @Override
     public SBinary multiplySBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
@@ -137,18 +150,22 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SBinary(binary);
     }
 
+    @Override
     public IArithmeticOperable divide(IArithmeticOperable other) {
         return other.divideSBinary(this);
     }
 
+    @Override
     public SInt divideSInt(SInt other) {
         return new SInt(other.toInt() / this.asSInt().toInt());
     }
 
+    @Override
     public SFloat divideSFloat(SFloat other) {
         return new SFloat(other.toDouble() / this.asSInt().toInt());
     }
 
+    @Override
     public SBinary divideSBinary(SBinary other) {
         int integer1 = this.asSInt().toInt();
         int integer2 = other.asSInt().toInt();
@@ -156,30 +173,37 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SBinary(binary);
     }
 
+    @Override
     public SBinary not() {
         return new SBinary(BinaryUtils.invertBinary(this.toString()));
     }
 
+    @Override
     public ILogicOperable and(ILogicOperable other) {
         return other.andSBinary(this);
     }
 
+    @Override
     public SBinary andSBool(SBool other) {
         return new SBinary(BinaryUtils.andBinaryWithBool(this.toString(), other.toBool()));
     }
 
+    @Override
     public SBinary andSBinary(SBinary other) {
         return new SBinary(BinaryUtils.andBinaries(this.toString(), other.toString()));
     }
 
+    @Override
     public ILogicOperable or(ILogicOperable other) {
         return other.orSBinary(this);
     }
 
+    @Override
     public SBinary orSBool(SBool other) {
         return new SBinary(BinaryUtils.orBinaryWithBool(this.toString(), other.toBool()));
     }
 
+    @Override
     public SBinary orSBinary(SBinary other) {
         return new SBinary(BinaryUtils.orBinaries(this.toString(), other.toString()));
     }

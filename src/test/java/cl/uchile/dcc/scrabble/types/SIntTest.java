@@ -45,7 +45,7 @@ class SIntTest {
         randomDouble = RandomUtils.randomDouble((double) INT_28);
         randomSFloat = new SFloat(randomDouble);
 
-        randomBinaryString = RandomUtils.randomBinaryString("0");
+        randomBinaryString = RandomUtils.randomBinaryString(0);
         randomSBinary = new SBinary(randomBinaryString);
 
     }

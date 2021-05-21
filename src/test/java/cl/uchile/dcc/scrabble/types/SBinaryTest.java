@@ -39,10 +39,10 @@ class SBinaryTest {
         sBinary150 = new SBinary(SBINARY_VALUE_150);
         sBinary52 = new SBinary(SBINARY_VALUE_52);
 
-        randomBinaryString = RandomUtils.randomBinaryString(SBINARY_VALUE_150);
+        randomBinaryString = RandomUtils.randomBinaryString(150);
         randomSBinary = new SBinary(randomBinaryString);
 
-        randomBinaryString2 = RandomUtils.randomBinaryString("");
+        randomBinaryString2 = RandomUtils.randomBinaryString(0);
         randomSBinary2 = new SBinary(randomBinaryString2);
 
         randomBoolean = RandomUtils.randomBool();

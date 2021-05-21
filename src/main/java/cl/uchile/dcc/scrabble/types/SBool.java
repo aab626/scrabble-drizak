@@ -69,34 +69,42 @@ public class SBool implements IConcatenable, ILogicOperable {
         return new SString(this.toString());
     }
 
+    @Override
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
     }
 
+    @Override
     public SBool not() {
         return new SBool(!this.toBool());
     }
 
+    @Override
     public ILogicOperable and(ILogicOperable other) {
         return other.andSBool(this);
     }
 
+    @Override
     public SBool andSBool(SBool other) {
         return new SBool(this.toBool() && other.toBool());
     }
 
+    @Override
     public SBinary andSBinary(SBinary other) {
         return other.andSBool(this);
     }
 
+    @Override
     public ILogicOperable or(ILogicOperable other) {
         return other.orSBool(this);
     }
 
+    @Override
     public SBool orSBool(SBool other) {
         return new SBool(this.toBool() || other.toBool());
     }
 
+    @Override
     public SBinary orSBinary(SBinary other) {
         return other.orSBool(this);
     }

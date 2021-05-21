@@ -57,7 +57,7 @@ public class RandomUtils {
      * @param excludedBinaryString binary string to exclude from randomization
      * @return random binary string of 1 to 32 bits
      */
-    public static String randomBinaryString(String excludedBinaryString) {
+    public static String randomBinaryString(int excludedBinaryAsInt) {
         Random rng = generateRNG();
         String randomBinaryString;
         int strSize = rng.nextInt(32-1)+1;
@@ -69,7 +69,7 @@ public class RandomUtils {
                 sb.append(bit);
             }
             randomBinaryString = sb.toString();
-        } while (randomBinaryString.equals(excludedBinaryString));
+        } while (BinaryUtils.toInt(randomBinaryString) == excludedBinaryAsInt);
 
         return randomBinaryString;
     }

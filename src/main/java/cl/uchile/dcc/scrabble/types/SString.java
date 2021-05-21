@@ -66,6 +66,7 @@ public class SString implements IConcatenable {
         return other.concatenateWithSString(this);
     }
 
+    @Override
     public SString concatenateWithSString(SString other) {
         return new SString(other.toString() + this.toString());
     }

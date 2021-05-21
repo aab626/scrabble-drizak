@@ -49,7 +49,7 @@ class SStringTest {
         randomBoolean = RandomUtils.randomBool();
         randomSBool = new SBool(randomBoolean);
 
-        randomBinaryString = RandomUtils.randomBinaryString("");
+        randomBinaryString = RandomUtils.randomBinaryString(0);
         randomSBinary = new SBinary(randomBinaryString);
 
 
