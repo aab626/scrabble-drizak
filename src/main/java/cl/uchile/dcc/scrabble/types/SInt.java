@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt extends SBaseType implements IConcatenable, IArithmeticOperable {
+public class SInt implements IConcatenable, IArithmeticOperable {
     private int value;
 
     /**
