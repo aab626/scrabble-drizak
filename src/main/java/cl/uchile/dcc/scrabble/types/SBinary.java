@@ -38,6 +38,7 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
     /**
      * @param obj Object to check for equality
      * @return true iff the other object is an SBinary that represents the same binary number,
+     * or a SFloat/SInt instance that holds the same number (in its decimal representation).
      * false otherwise
      */
     @Override
@@ -45,6 +46,12 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         if (obj instanceof SBinary) {
             SBinary o = (SBinary) obj;
             return this.asSInt().toInt() == o.asSInt().toInt();
+        } else if (obj instanceof SFloat) {
+            SFloat o = (SFloat) obj;
+            return (double) this.asSInt().toInt() == o.toDouble();
+        } else if (obj instanceof SInt) {
+            SInt o = (SInt) obj;
+            return this.asSInt().toInt() == o.toInt();
         } else {
             return false;
         }

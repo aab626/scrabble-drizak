@@ -34,7 +34,7 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
 
     /**
      * @param obj Object to check for equality
-     * @return true iff the other object is an SFloat or SInt such as its internal value is the same
+     * @return true iff the other object is an SFloat, SInt or SBinary such as its internal value is the same
      * as of this SFloat internal double. false otherwise
      */
     @Override
@@ -42,9 +42,14 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         if (obj instanceof SFloat){
             SFloat o = (SFloat) obj;
             return this.toDouble() == o.toDouble();
-        } else if (obj instanceof  SInt){
+        }
+        else if (obj instanceof SInt) {
             SInt o = (SInt) obj;
             return this.toDouble() == (double) o.toInt();
+        }
+        else if (obj instanceof SBinary) {
+            SBinary o = (SBinary) obj;
+            return this.toDouble() == (double) o.asSInt().toInt();
         } else {
             return false;
         }
