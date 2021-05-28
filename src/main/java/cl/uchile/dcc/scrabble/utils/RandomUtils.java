@@ -73,24 +73,25 @@ public class RandomUtils {
         return randomBinaryString;
     }
 
-    /**
-     * Generates a random non binary string using digits from 2 to 9
-     * @return random non binary string of length from 1 to 32
-     */
-    public static String randomNonBinaryString() {
-        Random rng = generateRNG();
-        String randomNonBinaryString;
-        int strSize = rng.nextInt(32-1)+1;
-
-        StringBuilder sb = new StringBuilder(strSize);
-        for (int i = 0; i < strSize; i++) {
-            char bit = NONBINARY_CHARS[rng.nextInt(NONBINARY_CHARS.length)];
-            sb.append(bit);
-        }
-
-        randomNonBinaryString = sb.toString();
-        return randomNonBinaryString;
-    }
+//    Not used anymore
+//    /**
+//     * Generates a random non binary string using digits from 2 to 9
+//     * @return random non binary string of length from 1 to 32
+//     */
+//    public static String randomNonBinaryString() {
+//        Random rng = generateRNG();
+//        String randomNonBinaryString;
+//        int strSize = rng.nextInt(32-1)+1;
+//
+//        StringBuilder sb = new StringBuilder(strSize);
+//        for (int i = 0; i < strSize; i++) {
+//            char bit = NONBINARY_CHARS[rng.nextInt(NONBINARY_CHARS.length)];
+//            sb.append(bit);
+//        }
+//
+//        randomNonBinaryString = sb.toString();
+//        return randomNonBinaryString;
+//    }
 
     /**
      * Generates a random string different to an specific one

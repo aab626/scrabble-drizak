@@ -72,6 +72,9 @@ class SBinaryTest {
         assertTrue(randomSBinary.equals(new SBinary(randomBinaryString)));
         assertFalse(randomSBinary.equals(sBinary150));
         assertFalse(randomSBinary.equals(randomBinaryString));
+
+        assertTrue(randomSBinary.equals(randomSBinary.asSInt()));
+        assertTrue(randomSBinary.equals(randomSBinary.asSFloat()));
     }
 
     @Test

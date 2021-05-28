@@ -73,6 +73,12 @@ class SIntTest {
 
         assertEquals(randomSInt, new SFloat((double) randomInt));
         assertNotEquals(randomSInt, new SFloat(randomDouble));
+
+        // Test only if intToBinary method doesn't fails (it does when the binary exceeds the 32 bits)
+        String sRandomBinary = BinaryUtils.intToBinary(randomInt);
+        if (sRandomBinary.length() < 32){
+            assertEquals(randomSInt, new SBinary(sRandomBinary));
+        }
     }
 
     @Test

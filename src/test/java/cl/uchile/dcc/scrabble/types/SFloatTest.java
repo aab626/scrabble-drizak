@@ -71,6 +71,9 @@ class SFloatTest {
         assertFalse(randomSFloat.equals(randomDouble));
 
         assertEquals(new SFloat((int) randomDouble), new SInt((int) randomDouble));
+        assertEquals(new SFloat((int) randomDouble), new SBinary(BinaryUtils.intToBinary((int) randomDouble)));
+        assertNotEquals(randomSFloat, new SBinary(BinaryUtils.intToBinary((int) randomDouble)));
+
         assertNotEquals(randomSFloat, new SInt((int) randomDouble));
     }
 
