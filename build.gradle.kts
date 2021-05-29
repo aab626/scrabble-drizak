@@ -26,28 +26,28 @@ repositories {
 
 dependencies {
     implementation(
-        group = "org.openjfx",
-        name = "javafx",
-        version = javaFXVersion,
-        ext = "pom"
+            group = "org.openjfx",
+            name = "javafx",
+            version = javaFXVersion,
+            ext = "pom"
     )
     implementation(
-        group = "org.jetbrains",
-        name = "annotations",
-        version = jbAnnotationsVersion
+            group = "org.jetbrains",
+            name = "annotations",
+            version = jbAnnotationsVersion
     )
     testImplementation(
-        group = "org.junit.jupiter", name = "junit-jupiter-api",
-        version = junitVersion
+            group = "org.junit.jupiter", name = "junit-jupiter-api",
+            version = junitVersion
     )
     testRuntimeOnly(
-        group = "org.junit.jupiter", name = "junit-jupiter-engine",
-        version = junitVersion
+            group = "org.junit.jupiter", name = "junit-jupiter-engine",
+            version = junitVersion
     )
     implementation(
-        group = "org.apache.commons",
-        name = "commons-lang3",
-        version = commonsLangVersion
+            group = "org.apache.commons",
+            name = "commons-lang3",
+            version = commonsLangVersion
     )
 }
 
