@@ -4,7 +4,7 @@ import cl.uchile.dcc.scrabble.types.ISType;
 
 /** External (leaf) node inside an AST, holds a Scrabble Type as a value */
 public class NodeExternal implements IEvaluable {
-    ISType value;
+    private ISType value;
 
     /**
      * Constructor of the external node
@@ -17,5 +17,13 @@ public class NodeExternal implements IEvaluable {
     @Override
     public ISType evaluate() {
         return this.value;
+    }
+
+    /**
+     * Setter for the value of the node, used when creating nodes via NodeFactory
+     * @param newValue the new value of the node
+     */
+    public void setValue(ISType newValue) {
+        this.value = newValue;
     }
 }

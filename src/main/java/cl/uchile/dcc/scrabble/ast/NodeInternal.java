@@ -53,4 +53,28 @@ public abstract class NodeInternal {
     public IEvaluable getOperand() {
         return this.getOperandL();
     }
+
+    /**
+     * Setter for the first operand in binary operations
+     * @param operand to be set
+     */
+    public void setOperandL(IEvaluable operand) {
+        this.children.set(0, operand);
+    }
+
+    /**
+     * Setter for the second operand in binary operations
+     * @param operand to be set
+     */
+    public void setOperandR(IEvaluable operand) {
+        this.children.set(1, operand);
+    }
+
+    /**
+     * Setter for the unique operand in unary operations
+     * @param operand to be set
+     */
+    public void setOperand(IEvaluable operand) {
+        this.setOperandL(operand);
+    }
 }
