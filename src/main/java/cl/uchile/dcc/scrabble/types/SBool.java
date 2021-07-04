@@ -3,7 +3,7 @@ package cl.uchile.dcc.scrabble.types;
 import java.util.Objects;
 
 /** Represents an internal Boolean type for Scrabble */
-public class SBool implements IConcatenable, ILogicOperable {
+public class SBool implements ISType, IConcatenable, ILogicOperable {
     private boolean value;
 
     /**
@@ -64,7 +64,7 @@ public class SBool implements IConcatenable, ILogicOperable {
         return new SBool(this.toBool());
     }
 
-    /** @return SString containing the internal boolean value (as a String) */
+    @Override
     public SString asSString(){
         return new SString(this.toString());
     }

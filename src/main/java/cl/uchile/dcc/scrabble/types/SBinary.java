@@ -7,7 +7,7 @@ import java.util.Objects;
 import static java.lang.Math.abs;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperable {
+public class SBinary implements ISType, IArithmeticOperable, IConcatenable, ILogicOperable {
     private String value;
 
     /**
@@ -67,7 +67,7 @@ public class SBinary implements IArithmeticOperable, IConcatenable, ILogicOperab
         return new SBinary(this.toString());
     }
 
-    /** @return SString containing the Binary string (as the same String)*/
+    @Override
     public SString asSString() {
         return new SString(this.toString());
     }
