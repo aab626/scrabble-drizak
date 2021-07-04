@@ -19,8 +19,8 @@ class ASTreeTest {
     }
 
     /**
-     * This test constructs and evaluates an AST that can be found here:
-     * todo add AST image link
+     * This test constructs and evaluates an AST that can be found here
+     * /scrabble-drizak/diagrams/Tarea 2/AST_Test.png
      */
     @Test
     void AddTreeTest() {
