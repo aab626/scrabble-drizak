@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.ast;
 
+import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
 import cl.uchile.dcc.scrabble.types.ILogicOperable;
 import cl.uchile.dcc.scrabble.types.ISType;
 
@@ -14,8 +15,12 @@ public class NodeNot extends NodeInternal implements IEvaluable{
     }
 
     @Override
-    public ISType evaluate() {
-        ILogicOperable result = (ILogicOperable) this.getOperand().evaluate();
-        return (ISType) result.not();
+    public ISType evaluate() throws UnsupportedOperandException {
+        try {
+            ILogicOperable result = (ILogicOperable) this.getOperand().evaluate();
+            return (ISType) result.not();
+        } catch (ClassCastException e) {
+            throw new UnsupportedOperandException();
+        }
     }
 }

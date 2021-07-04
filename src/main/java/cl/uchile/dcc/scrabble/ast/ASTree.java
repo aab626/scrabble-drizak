@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.ast;
 
+import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
 import cl.uchile.dcc.scrabble.types.ISType;
 
 /**
@@ -18,8 +19,17 @@ public class ASTree implements IEvaluable{
         this.root = root;
     }
 
+    /**
+     * Evaluates the whole AST, effectively reducing it to a single Scrabble Type
+     * or a null value if there is an unsupported operation somewhere.
+     * @return an Scrabble Type, or a null.
+     */
     @Override
     public ISType evaluate() {
-        return root.evaluate();
+        try {
+            return root.evaluate();
+        } catch (UnsupportedOperandException e){
+            return null;
+        }
     }
 }

@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.ast;
 
+import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
 import cl.uchile.dcc.scrabble.types.IArithmeticOperable;
 import cl.uchile.dcc.scrabble.types.ISType;
 
@@ -15,9 +16,14 @@ public class NodeAdd extends NodeInternal implements IEvaluable{
     }
 
     @Override
-    public ISType evaluate() {
-        IArithmeticOperable resultL = (IArithmeticOperable) this.getOperandL().evaluate();
-        IArithmeticOperable resultR = (IArithmeticOperable) this.getOperandR().evaluate();
-        return (ISType) resultL.add(resultR);
+    public ISType evaluate() throws UnsupportedOperandException{
+        try {
+            IArithmeticOperable resultL = (IArithmeticOperable) this.getOperandL().evaluate();
+            IArithmeticOperable resultR = (IArithmeticOperable) this.getOperandR().evaluate();
+            return (ISType) resultL.add(resultR);
+        } catch (ClassCastException e) {
+            throw new UnsupportedOperandException();
+        }
     }
 }
+
