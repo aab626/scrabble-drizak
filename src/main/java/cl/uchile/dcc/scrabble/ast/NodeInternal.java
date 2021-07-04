@@ -29,6 +29,7 @@ public abstract class NodeInternal {
      * @param operand Unique operand for the operation
      */
     public NodeInternal(IEvaluable operand) {
+        this.children = new ArrayList<IEvaluable>();
         this.children.add(operand);
     }
 

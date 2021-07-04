@@ -95,6 +95,11 @@ class SStringTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
+    void asSStringTest() {
+        assertEquals(randomSString, randomSString.asSString());
+    }
+
+    @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
     void concatenateTest() {
         assertEquals(new SString(STRING_VALUE_FIXED + randomString), sStringFixed.concatenate(randomSString), "Failed concatenating to SString");
         assertEquals(new SString(STRING_VALUE_FIXED + String.valueOf(randomInt)), sStringFixed.concatenate(randomSInt), "Failed concatenating to SInt");

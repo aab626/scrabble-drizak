@@ -58,7 +58,7 @@ public class SString implements ISType, IConcatenable {
 
     @Override
     public SString asSString() {
-        return new SString(this.toString());
+        return this.copy();
     }
 
     /**
