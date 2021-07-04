@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt implements IConcatenable, IArithmeticOperable {
+public class SInt implements ISType, IConcatenable, IArithmeticOperable {
     private int value;
 
     /**
@@ -76,7 +76,7 @@ public class SInt implements IConcatenable, IArithmeticOperable {
         return new SFloat((double) this.value);
     }
 
-    /** @return SString containing the internal int value (as a string) */
+    @Override
     public SString asSString() {
         return new SString(this.toString());
     }

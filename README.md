@@ -34,4 +34,11 @@ Build with `gradle build`, and test with `gradle test`.
 * The package `cl.uchile.dcc.scrabble.utils` store utility (helper) classes, to avoid
   code cluttering inside others. ie: `BinaryUtils` stores some code related
   to binary numbers, in particular to avoid cluttering the `SBinary` class. 
-  All classes in this package are well documented, and their purpose should be clear.  
+  All classes in this package are well documented, and their purpose should be clear.
+  
+* Nodes inside the _Abstract Syntax Tree_ (AST) can be created with the `NodeFactory` class,
+  this will create nodes with `null` children, so these must be manually set using
+  `setOperandL(IEvaluable)`, `setOperandR(IEvaluable)`, `setOperand(IEvaluable)` (for internal nodes) or use `setValue(ISType)` for external nodes.
+  
+* ASTs may be created using the usual `new` statement, these require a root `IEvaluable` node as
+  a constructor argument, and can be evaluated using the `evaluate()` method.

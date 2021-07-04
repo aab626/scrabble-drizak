@@ -5,7 +5,7 @@ import cl.uchile.dcc.scrabble.utils.BinaryUtils;
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
-public class SFloat implements IConcatenable, IArithmeticOperable {
+public class SFloat implements ISType, IConcatenable, IArithmeticOperable {
     private double value;
 
     /**
@@ -71,7 +71,7 @@ public class SFloat implements IConcatenable, IArithmeticOperable {
         return new SFloat(this.toDouble());
     }
 
-    /** @return SString containing the internal double (as a String) */
+    @Override
     public SString asSString(){
         return new SString(this.toString());
     }
