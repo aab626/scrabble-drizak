@@ -24,7 +24,7 @@ public class NodeSetVariable extends NodeInternal implements IEvaluable {
         try {
             varName = (SString) this.getOperandL().evaluate();
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to a SString");
         }
         ISType variable = this.getOperandR().evaluate();
 

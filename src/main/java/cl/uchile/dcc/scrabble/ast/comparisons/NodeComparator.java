@@ -27,7 +27,7 @@ public abstract class NodeComparator extends NodeInternal {
             IArithmeticOperable comparedR = (IArithmeticOperable) this.getOperandR().evaluate();
             return comparedL.compareTo(comparedR);
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Comparison between these types is not possible.");
         }
     }
 

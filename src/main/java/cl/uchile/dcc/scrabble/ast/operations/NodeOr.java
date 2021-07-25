@@ -24,7 +24,7 @@ public class NodeOr extends NodeInternal implements IEvaluable {
             ILogicOperable resultR = (ILogicOperable) this.getOperandR().evaluate();
             return (ISType) resultL.or(resultR);
         }  catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to an IArithmeticOperable");
         }
     }
 }

@@ -24,7 +24,7 @@ public class NodeDivide extends NodeInternal implements IEvaluable {
             IArithmeticOperable resultR = (IArithmeticOperable) this.getOperandR().evaluate();
             return (ISType) resultL.divide(resultR);
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to an IArithmeticOperable");
         }
     }
 }

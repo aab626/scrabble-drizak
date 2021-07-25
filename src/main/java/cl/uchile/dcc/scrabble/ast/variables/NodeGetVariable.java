@@ -20,11 +20,14 @@ public class NodeGetVariable extends NodeInternal implements IEvaluable {
 
     @Override
     public ISType evaluate() throws ASTOperationException{
+        SString varName = null;
         try {
-            SString varName = (SString) this.getOperand().evaluate();
+            varName = (SString) this.getOperand().evaluate();
             return variableMap.getInstance().getVar(varName.toString());
+        } catch (ClassCastException e){
+            throw new ASTOperationException("Evaluation result could not be casted to a SString");
         } catch (VariableNotFoundException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Variable with name ".concat(varName.toString()).concat("was not found"));
         }
     }
 

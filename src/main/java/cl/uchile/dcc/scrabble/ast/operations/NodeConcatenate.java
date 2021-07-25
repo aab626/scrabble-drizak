@@ -25,7 +25,7 @@ public class NodeConcatenate extends NodeInternal implements IEvaluable {
             SString resultR = (SString) this.getOperandR().evaluate();
             return (ISType) resultL.concatenateWithSString(resultR);
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to a SString");
         }
     }
 }

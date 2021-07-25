@@ -12,7 +12,7 @@ public class FlowControlUtils {
         try{
             result = (SBool) condition.evaluate();
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to a SBool");
         }
 
         return result.toBool();

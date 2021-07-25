@@ -22,7 +22,7 @@ public class NodeNot extends NodeInternal implements IEvaluable {
             ILogicOperable result = (ILogicOperable) this.getOperand().evaluate();
             return (ISType) result.not();
         } catch (ClassCastException e) {
-            throw new ASTOperationException();
+            throw new ASTOperationException("Evaluation result could not be casted to an IArithmeticOperable");
         }
     }
 }

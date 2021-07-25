@@ -29,7 +29,7 @@ public class variableMap {
         if (this.varMap.containsKey(name)) {
             return this.varMap.get(name);
         } else {
-            throw new VariableNotFoundException();
+            throw new VariableNotFoundException("Variable with name ".concat(name).concat(" was not found."));
         }
 
     }
