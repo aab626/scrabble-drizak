@@ -1,13 +1,14 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+import cl.uchile.dcc.scrabble.utils.NumberUtils;
 
 import java.util.Objects;
 
 import static java.lang.Math.abs;
 
 /** Represents an internal Binary type for Scrabble, using Strings composed of only 0s and 1s. */
-public class SBinary implements ISType, IArithmeticOperable, IConcatenable, ILogicOperable {
+public class SBinary implements ISType, IArithmeticOperable, IConcatenable, ILogicOperable, Comparable<IArithmeticOperable> {
     private String value;
 
     /**
@@ -214,4 +215,15 @@ public class SBinary implements ISType, IArithmeticOperable, IConcatenable, ILog
         return new SBinary(BinaryUtils.orBinaries(this.toString(), other.toString()));
     }
 
+    @Override
+    public double asNumber(){
+        return (double) this.asSInt().toInt();
+    }
+
+    @Override
+    public int compareTo(IArithmeticOperable other){
+        double thisNumber = this.asNumber();
+        double otherNumber = other.asNumber();
+        return NumberUtils.compareTo(thisNumber, otherNumber);
+    }
 }

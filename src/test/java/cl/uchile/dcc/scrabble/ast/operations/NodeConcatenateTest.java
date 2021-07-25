@@ -1,6 +1,7 @@
-package cl.uchile.dcc.scrabble.ast;
+package cl.uchile.dcc.scrabble.ast.operations;
 
-import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
+import cl.uchile.dcc.scrabble.ast.NodeExternal;
+import cl.uchile.dcc.scrabble.exceptions.ASTOperationException;
 import cl.uchile.dcc.scrabble.types.SInt;
 import cl.uchile.dcc.scrabble.types.SString;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
@@ -27,7 +28,7 @@ class NodeConcatenateTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void evaluationTest() throws UnsupportedOperandException {
+    void evaluationTest() throws ASTOperationException {
         NodeConcatenate node = new NodeConcatenate(new NodeExternal(randomSString1), new NodeExternal(randomSString2));
         assertEquals(node.evaluate(), randomSString2.concatenate(randomSString1));
     }
@@ -35,7 +36,7 @@ class NodeConcatenateTest {
     @Test
     void exceptionTest() {
         NodeConcatenate node = new NodeConcatenate(new NodeExternal(randomSString1), new NodeExternal(new SInt(1)));
-        assertThrows(UnsupportedOperandException.class, () -> {node.evaluate();});
+        assertThrows(ASTOperationException.class, () -> {node.evaluate();});
     }
 
 }
