@@ -48,13 +48,18 @@ Build with `gradle build`, and test with `gradle test`.
   using the `setVar(String, ISType)`, and retrieved with `getVar(String)`.
   
 * Flow Control is implemented via nodes that work inside an AST, to ensure a correct usage of
-  `while` statements within Scrabble, both executed and condition ASTs may need to refer to variables
+  `while` nodes within Scrabble, both executed and condition ASTs may need to refer to variables
   using the `variableMap` instance.
 
-* A example AST using a While and If Nodes is present in the tests, using the Euclides Algorithm.
+* An example AST using a While and If Nodes is present in the tests, using the Euclides Algorithm.
 
-  * First, two integer values are randomized between 1 and 100.
+  * First, two integer values are randomized between 1 and 100 and stored into the Scrabble Variables
+    `a` and `b`.
   * Then, the algorithm runs following this diagram:
+    
+    If the image below does not display correctly, it can be found [here](https://github.com/CC3002-Metodologias/scrabble-drizak/blob/tarea-3/diagrams/Tarea%203/AST_Euclides.png).
   
+  ![Euclides Algorithm AST](https://raw.githubusercontent.com/CC3002-Metodologias/scrabble-drizak/tarea-3/diagrams/Tarea%203/AST_Euclides.png?token=ADGR52W5K6PAXK22JMYQCWDBA45OY)
 
+  * Finally, the computed GCD is stored into the `b` variable 
   
