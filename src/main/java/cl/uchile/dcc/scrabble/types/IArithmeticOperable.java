@@ -5,6 +5,9 @@ package cl.uchile.dcc.scrabble.types;
  * SUM, SUBTRACTION, MULTIPLICATION and DIVISION
  */
 public interface IArithmeticOperable {
+    /** Method to return the number as a double */
+    double asNumber();
+
     /**
      * Method to be called to perform a SUM operation
      * @param other Object to be operated with

@@ -1,6 +1,7 @@
-package cl.uchile.dcc.scrabble.ast;
+package cl.uchile.dcc.scrabble.ast.operations;
 
-import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
+import cl.uchile.dcc.scrabble.ast.NodeExternal;
+import cl.uchile.dcc.scrabble.exceptions.ASTOperationException;
 import cl.uchile.dcc.scrabble.types.SBool;
 import cl.uchile.dcc.scrabble.types.SString;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NodeOrTest {
+class NodeAndTest {
     private boolean randomBoolean1;
     private boolean randomBoolean2;
 
@@ -27,15 +28,15 @@ class NodeOrTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void evaluationTest() throws UnsupportedOperandException {
-        NodeOr node = new NodeOr(new NodeExternal(SBool1), new NodeExternal(SBool2));
-        assertEquals(node.evaluate(),SBool1.or(SBool2));
+    void evaluationTest() throws ASTOperationException {
+        NodeAnd node = new NodeAnd(new NodeExternal(SBool1), new NodeExternal(SBool2));
+        assertEquals(node.evaluate(),SBool1.and(SBool2));
     }
 
     @Test
     void exceptionTest() {
-        NodeOr node = new NodeOr(new NodeExternal(SBool1), new NodeExternal(new SString("nya")));
-        assertThrows(UnsupportedOperandException.class, () -> {node.evaluate();});
+        NodeAnd node = new NodeAnd(new NodeExternal(SBool1), new NodeExternal(new SString("nya")));
+        assertThrows(ASTOperationException.class, () -> {node.evaluate();});
     }
 
 }

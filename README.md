@@ -42,3 +42,24 @@ Build with `gradle build`, and test with `gradle test`.
   
 * ASTs may be created using the usual `new` statement, these require a root `IEvaluable` node as
   a constructor argument, and can be evaluated using the `evaluate()` method.
+  
+* Variable storing has been implemented via a singleton class `variableMap`, that must be instanced using the
+  static method `variableMap.getInstance()`. Variables then can be stored in the instance with a String hash, 
+  using the `setVar(String, ISType)`, and retrieved with `getVar(String)`.
+  
+* Flow Control is implemented via nodes that work inside an AST, to ensure a correct usage of
+  `while` nodes within Scrabble, both executed and condition ASTs may need to refer to variables
+  using the `variableMap` instance.
+
+* An example AST using a While and If Nodes is present in the tests, using the Euclides Algorithm.
+
+  * First, two integer values are randomized between 1 and 100 and stored into the Scrabble Variables
+    `a` and `b`.
+  * Then, the algorithm runs following this diagram:
+    
+    If the image below does not display correctly, it can be found [here](https://github.com/CC3002-Metodologias/scrabble-drizak/blob/tarea-3/diagrams/Tarea%203/AST_Euclides.png).
+  
+  ![Euclides Algorithm AST](https://raw.githubusercontent.com/CC3002-Metodologias/scrabble-drizak/tarea-3/diagrams/Tarea%203/AST_Euclides.png?token=ADGR52W5K6PAXK22JMYQCWDBA45OY)
+
+  * Finally, the computed GCD is stored into the `b` variable 
+  

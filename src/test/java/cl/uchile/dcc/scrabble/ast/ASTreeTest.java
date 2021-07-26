@@ -1,5 +1,6 @@
 package cl.uchile.dcc.scrabble.ast;
 
+import cl.uchile.dcc.scrabble.ast.operations.*;
 import cl.uchile.dcc.scrabble.types.*;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package cl.uchile.dcc.scrabble.ast;
 
-import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
+import cl.uchile.dcc.scrabble.exceptions.ASTOperationException;
 import cl.uchile.dcc.scrabble.types.ISType;
 
 /**
@@ -25,10 +25,10 @@ public class ASTree implements IEvaluable{
      * @return an Scrabble Type, or a null.
      */
     @Override
-    public ISType evaluate() {
+    public ISType evaluate(){
         try {
             return root.evaluate();
-        } catch (UnsupportedOperandException e){
+        } catch (ASTOperationException e){
             return null;
         }
     }

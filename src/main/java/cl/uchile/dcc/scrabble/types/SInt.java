@@ -1,11 +1,12 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+import cl.uchile.dcc.scrabble.utils.NumberUtils;
 
 import java.util.Objects;
 
 /** Represents an integer (int) type for Scrabble */
-public class SInt implements ISType, IConcatenable, IArithmeticOperable {
+public class SInt implements ISType, IConcatenable, IArithmeticOperable, Comparable<IArithmeticOperable> {
     private int value;
 
     /**
@@ -169,6 +170,18 @@ public class SInt implements ISType, IConcatenable, IArithmeticOperable {
     @Override
     public SBinary divideSBinary(SBinary other) {
         return new SBinary(BinaryUtils.intToBinary(other.asSInt().toInt() / this.toInt()));
+    }
+
+    @Override
+    public double asNumber(){
+        return (double) this.toInt();
+    }
+
+    @Override
+    public int compareTo(IArithmeticOperable other){
+        double thisNumber = this.asNumber();
+        double otherNumber = other.asNumber();
+        return NumberUtils.compareTo(thisNumber, otherNumber);
     }
 
 

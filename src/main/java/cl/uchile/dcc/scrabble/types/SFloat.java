@@ -1,11 +1,12 @@
 package cl.uchile.dcc.scrabble.types;
 
 import cl.uchile.dcc.scrabble.utils.BinaryUtils;
+import cl.uchile.dcc.scrabble.utils.NumberUtils;
 
 import java.util.Objects;
 
 /** Represents an Float (decimal) type for Scrabble, utilizing a Java double value */
-public class SFloat implements ISType, IConcatenable, IArithmeticOperable {
+public class SFloat implements ISType, IConcatenable, IArithmeticOperable, Comparable<IArithmeticOperable> {
     private double value;
 
     /**
@@ -175,5 +176,17 @@ public class SFloat implements ISType, IConcatenable, IArithmeticOperable {
     @Override
     public SFloat divideSBinary(SBinary other) {
         return new SFloat(other.asSInt().toInt() / this.toDouble());
+    }
+
+    @Override
+    public double asNumber(){
+        return this.toDouble();
+    }
+
+    @Override
+    public int compareTo(IArithmeticOperable other){
+        double thisNumber = this.asNumber();
+        double otherNumber = other.asNumber();
+        return NumberUtils.compareTo(thisNumber, otherNumber);
     }
 }

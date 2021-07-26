@@ -1,6 +1,8 @@
-package cl.uchile.dcc.scrabble.ast;
+package cl.uchile.dcc.scrabble.ast.comparisons;
 
-import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
+import cl.uchile.dcc.scrabble.ast.NodeExternal;
+import cl.uchile.dcc.scrabble.exceptions.ASTOperationException;
+import cl.uchile.dcc.scrabble.types.SBool;
 import cl.uchile.dcc.scrabble.types.SInt;
 import cl.uchile.dcc.scrabble.types.SString;
 import cl.uchile.dcc.scrabble.utils.RandomUtils;
@@ -10,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NodeAddTest {
+class NodeGreaterOrEqualTest {
     private int randomInt1;
     private int randomInt2;
 
@@ -27,15 +29,15 @@ class NodeAddTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void evaluationTest() throws UnsupportedOperandException {
-        NodeAdd node = new NodeAdd(new NodeExternal(randomSInt1), new NodeExternal(randomSInt2));
-        assertEquals(node.evaluate(),randomSInt1.add(randomSInt2));
+    void evaluationTest() throws ASTOperationException {
+        NodeGreaterOrEqual node = new NodeGreaterOrEqual(new NodeExternal(randomSInt1), new NodeExternal(randomSInt2));
+        assertEquals(new SBool(randomInt1 >= randomInt2), node.evaluate());
     }
 
     @Test
     void exceptionTest() {
-        NodeAdd node = new NodeAdd(new NodeExternal(randomSInt1), new NodeExternal(new SString("nya")));
-        assertThrows(UnsupportedOperandException.class, () -> {node.evaluate();});
+        NodeGreaterOrEqual node = new NodeGreaterOrEqual(new NodeExternal(randomSInt1), new NodeExternal(new SString("nya")));
+        assertThrows(ASTOperationException.class, () -> {node.evaluate();});
     }
 
 }

@@ -1,7 +1,8 @@
 package cl.uchile.dcc.scrabble.ast.factory;
 
 import cl.uchile.dcc.scrabble.ast.*;
-import cl.uchile.dcc.scrabble.exceptions.UnsupportedOperandException;
+import cl.uchile.dcc.scrabble.ast.operations.*;
+import cl.uchile.dcc.scrabble.exceptions.ASTOperationException;
 import cl.uchile.dcc.scrabble.types.SBool;
 import cl.uchile.dcc.scrabble.types.SInt;
 import cl.uchile.dcc.scrabble.types.SString;
@@ -70,7 +71,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createAddTest() throws UnsupportedOperandException {
+    void createAddTest() throws ASTOperationException {
         NodeAdd node = factory.createAdd();
         node.setOperandL(nodeNumber1);
         node.setOperandR(nodeNumber2);
@@ -79,7 +80,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createSubtractTest() throws UnsupportedOperandException {
+    void createSubtractTest() throws ASTOperationException {
         NodeSubtract node = factory.createSubtract();
         node.setOperandL(nodeNumber1);
         node.setOperandR(nodeNumber2);
@@ -88,7 +89,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createMultiplyTest() throws UnsupportedOperandException {
+    void createMultiplyTest() throws ASTOperationException {
         NodeMultiply node = factory.createMultiply();
         node.setOperandL(nodeNumber1);
         node.setOperandR(nodeNumber2);
@@ -97,7 +98,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createDivideTest() throws UnsupportedOperandException {
+    void createDivideTest() throws ASTOperationException {
         NodeDivide node = factory.createDivide();
         node.setOperandL(nodeNumber1);
         node.setOperandR(nodeNumber2);
@@ -106,7 +107,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createAndTest() throws UnsupportedOperandException {
+    void createAndTest() throws ASTOperationException {
         NodeAnd node = factory.createAnd();
         node.setOperandL(nodeBool1);
         node.setOperandR(nodeBool2);
@@ -115,7 +116,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createOrTest() throws UnsupportedOperandException {
+    void createOrTest() throws ASTOperationException {
         NodeOr node = factory.createOr();
         node.setOperandL(nodeBool1);
         node.setOperandR(nodeBool2);
@@ -124,7 +125,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createNotTest() throws UnsupportedOperandException {
+    void createNotTest() throws ASTOperationException {
         NodeNot node = factory.createNot();
         node.setOperand(nodeBool1);
 
@@ -132,7 +133,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createConcatenateTest() throws UnsupportedOperandException {
+    void createConcatenateTest() throws ASTOperationException {
         NodeConcatenate node = factory.createConcatenate();
         node.setOperandL(nodeString1);
         node.setOperandR(nodeString2);
@@ -141,7 +142,7 @@ class NodeFactoryTest {
     }
 
     @RepeatedTest(value=20, name=RepeatedTest.LONG_DISPLAY_NAME)
-    void createExternalTest() throws UnsupportedOperandException {
+    void createExternalTest() throws ASTOperationException {
         NodeExternal node = factory.createExternal();
         node.setValue(randomSInt1);
 
